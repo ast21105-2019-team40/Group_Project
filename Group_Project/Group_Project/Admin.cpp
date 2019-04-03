@@ -6,7 +6,6 @@ Admin::Admin(){
 }
 
 
-
 string Admin::Agetter(){
 	return account;
 }
