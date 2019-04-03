@@ -1,7 +1,5 @@
 #include "User.h"
 
-
-
 SCT::SCT(string _TuserID, string _Tname, string _Tsection, string _Tpassword, string _Taddress, string _Trank){
 	this->TuserID = _TuserID;
 	this->Tname = _Tname;
@@ -18,6 +16,8 @@ SCT::~SCT(){
 
 };
 
+
+
 VEN::VEN(string _VuserID, string _Vname, string _Vsection, string _Vpassword, string _Vaddress){
 	this->VuserID = _VuserID;
 	this->Vname = _Vname;
@@ -31,6 +31,8 @@ VEN::VEN(string _VuserID, string _Vname, string _Vsection, string _Vpassword, st
 VEN::~VEN(){
 
 };
+
+
 
 ROV::ROV(string _RuserID, string _Rname, string _Rsection, string _Rpassword, string Raddress){
 	this->RuserID = _RuserID;
@@ -47,11 +49,13 @@ ROV::~ROV(){
 
 };
 
+
 SCM::SCM(string _MuserID, string _Mname, string _Msection, string _Mpassword, string _Maddress, string _Mrank){
 	this->MuserID = _MuserID;
 	this->Mname = _Mname;
 	this->Msection = _Msection;
 	this->Mpassword = _Mpassword;
+	this->Maddress = _Maddress;
 	this->Mrank = _Mrank;
 	this->MNext = NULL;
 }
