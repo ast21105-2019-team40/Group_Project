@@ -18,6 +18,7 @@ public:
 	string Tdoor;
 	string TDlayer;
 	string Tcolour;
+	Tent* TeHead = NULL;
 	Tent* TeNext;
 
 public:
@@ -39,6 +40,7 @@ public:
 	string Sstatus;
 	string Sstype;
 	string Sftype;
+	Stove* StHead = NULL;
 	Stove* StNext;
 
 public:
@@ -61,6 +63,7 @@ public:
 	string LactType;
 	string Lltype;
 	string Lftype;
+	Lantern* LaHead = NULL;
 	Lantern* LaNext;
 
 public:

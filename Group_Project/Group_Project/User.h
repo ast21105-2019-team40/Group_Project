@@ -12,6 +12,7 @@ public:
 	string Tpassword;
 	string Taddress;
 	string Trank;
+	SCT* THead = NULL;
 	SCT* TNext;
 
 public:
@@ -29,6 +30,7 @@ public:
 	string Vsection;
 	string Vpassword;
 	string Vaddress;
+	VEN* VHead = NULL;
 	VEN* VNext;
 public:
 	VEN(string _VuserID, string _Vname, string _Vsection, string _Vpassword, string _Vaddress);
@@ -44,6 +46,7 @@ public:
 	string Rsection;
 	string Rpassword;
 	string Raddress;
+	ROV* RHead = NULL;
 	ROV* RNext;
 
 
@@ -62,6 +65,7 @@ public:
 	string Mpassword;
 	string Maddress;
 	string Mrank;
+	SCM* MHead = NULL;
 	SCM* MNext;
 public:
 	SCM(string _MuserID, string _Mname, string _Msection, string _Mpassword, string _Maddress, string _Mrank);
