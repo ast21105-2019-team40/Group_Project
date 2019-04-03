@@ -6,7 +6,7 @@ using namespace std;
 
 class Tent{
 
-private:
+public:
 	string TitemCode;
 	string TitemName;
 	string Tbrand;
@@ -29,7 +29,7 @@ public:
 
 class Stove{
 
-private: 
+public: 
 	string SitemCode;
 	string SitemName;
 	string Sbrand;
@@ -48,9 +48,9 @@ public:
 
 };
 
-class Lantern
-{
-private:
+class Lantern{
+
+public:
 	string LitemCode;
 	string LitemName;
 	string Lbrand;

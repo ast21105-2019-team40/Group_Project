@@ -5,7 +5,7 @@
 using namespace std;
 class FileHandler
 {
-private:
+public:
 	string autofilename;
 	string inputfilename;
 

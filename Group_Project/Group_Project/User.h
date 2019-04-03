@@ -23,7 +23,7 @@ public:
 };
 
 class VEN{
-private:
+public:
 	string VuserID;
 	string Vname;
 	string Vsection;
@@ -38,7 +38,7 @@ public:
 };
 
 class ROV{
-private:
+public:
 	string RuserID;
 	string Rname;
 	string Rsection;
@@ -55,7 +55,7 @@ public:
 };
 
 class SCM{
-private:
+public:
 	string MuserID;
 	string Mname;
 	string Msection;
