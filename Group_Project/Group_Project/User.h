@@ -15,6 +15,7 @@ public:
 	SCT* TNext;
 
 public:
+	SCT();
 	SCT(string _TuserID, string _Tname, string _Tsection, string _Tpassword, string _Taddress, string _Trank);
 	~SCT();
 
@@ -30,6 +31,7 @@ public:
 	string Vaddress;
 	VEN* VNext;
 public:
+	VEN();
 	VEN(string _VuserID, string _Vname, string _Vsection, string _Vpassword, string _Vaddress);
 	~VEN();
 
@@ -47,6 +49,7 @@ public:
 
 
 public:
+	ROV();
 	ROV(string _RuserID, string _Rname, string _Rsection, string _Rpassword, string Raddress);
 	~ROV();
 
@@ -63,6 +66,7 @@ public:
 	string Mrank;
 	SCM* MNext;
 public:
+	SCM();
 	SCM(string _MuserID, string _Mname, string _Msection, string _Mpassword, string _Maddress, string _Mrank);
 	~SCM();
 

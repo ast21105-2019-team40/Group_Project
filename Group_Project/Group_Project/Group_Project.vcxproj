@@ -115,6 +115,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Action.cpp" />
     <ClCompile Include="Admin.cpp" />
     <ClCompile Include="Equipment.cpp" />
     <ClCompile Include="FileHandler.cpp" />
@@ -123,6 +124,7 @@
     <ClCompile Include="User.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Action.h" />
     <ClInclude Include="Admin.h" />
     <ClInclude Include="Equipment.h" />
     <ClInclude Include="File.h" />

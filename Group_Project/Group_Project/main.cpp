@@ -1,4 +1,5 @@
 #include "Admin.h"
+#include "Action.h"
 #include "User.h"
 #include "FileList.h"
 #include "FileHandler.h"
@@ -8,9 +9,17 @@ using namespace std;
 
 int main() {
 	
+	string account;
+	string password;
 	Admin a;
-	cout << a.Agetter() << endl;
-	cout << a.Pgetter() << endl;
+	SCT sct;
+	VEN ven;
+	SCM scm;
+	ROV rov;
+	Action act;
+
+
+
 	
 	FileList list;
 	list.UserFileStoreAuto();
@@ -19,9 +28,13 @@ int main() {
 	list.EqmFileWriteAuto();
 	//list.FileDisplay();
 	FileHandler file;
-	//file.Userfileautoinput();
+	file.Userfileautoinput();
 	file.Eqmfileautoinput();
-	file.display();
+	//file.display();
+
+	act.doAction(file);
+
+
 	system("pause");
 
 

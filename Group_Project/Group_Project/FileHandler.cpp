@@ -8,7 +8,6 @@ FileHandler::FileHandler()
 	autofilename2 = "camp_equipment.txt";
 	inputfilename = "";
 
-
 }
 
 void FileHandler::Userfileautoinput(){

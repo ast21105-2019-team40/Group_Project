@@ -12,6 +12,7 @@ public:
 
 
 public:
+
 	File(string _line) {
 		this->line = _line;
 		this->UNext = NULL;

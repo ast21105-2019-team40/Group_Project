@@ -33,6 +33,9 @@
     <ClCompile Include="FileList.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Action.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="User.h">
@@ -51,6 +54,9 @@
       <Filter>Source Files</Filter>
     </ClInclude>
     <ClInclude Include="File.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Action.h">
       <Filter>Source Files</Filter>
     </ClInclude>
   </ItemGroup>
