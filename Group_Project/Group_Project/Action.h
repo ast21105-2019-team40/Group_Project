@@ -21,6 +21,26 @@ public:
 	~Action();
 	void doAction(FileHandler& file);
 
+
+	void UserSearchEqmAll(FileHandler& file);
+	void UserSearchEqmType(FileHandler& file);
+	void UserSearchEqmCondition(FileHandler& file);
+	void UserSearchEqmID(FileHandler& file);
+	void UserSearchEqmStatus(FileHandler& file);
+
+	void UserSearchLoanRecord(FileHandler& file);
+	void UserBorrow(FileHandler& file);
+	void UserReturn(FileHandler& file);
+
+
+
+
+
+
+
+
+	void 
+
 };
 
 
