@@ -8,6 +8,7 @@ FileHandler::FileHandler()
 	autofilename2 = "camp_equipment.txt";
 	inputfilename = "";
 
+
 }
 
 void FileHandler::fileautoinput1(){
@@ -46,8 +47,9 @@ void FileHandler::fileautoinput1(){
 					VHead = VENcurr;
 				}
 				else {
+					for (VENcurr = VHead; VENcurr->VNext != NULL; VENcurr = VENcurr->VNext) {}
 					VEN* VENList = new VEN(userID, name, section, password, address);
-					VENcurr->VNext = VENList;
+					VENcurr->VNext= VENList;
 					VENcurr = VENcurr->VNext;
 				}
 
@@ -65,13 +67,14 @@ void FileHandler::fileautoinput1(){
 					RHead = ROVcurr;
 				}
 				else {
+					for (ROVcurr = RHead; ROVcurr->RNext != NULL; ROVcurr = ROVcurr->RNext) {}
 					ROV* ROVList = new ROV(userID, name, section, password, address);
 					ROVcurr->RNext = ROVList;
 					ROVcurr = ROVcurr->RNext;
 				}
 
 			}
-			else if (userID.substr(0, 3)=="SCT") {
+			else if (userID.substr(0, 3) == "SCT") {
 				getline(dataSet, name, '|');
 				getline(dataSet, section, '|');
 				getline(dataSet, password, '|');
@@ -85,13 +88,14 @@ void FileHandler::fileautoinput1(){
 					THead = SCTcurr;
 				}
 				else {
+					for (SCTcurr = THead; SCTcurr->TNext != NULL; SCTcurr = SCTcurr->TNext) {}
 					SCT* SCTList = new SCT(userID, name, section, password, address, rank);
 					SCTcurr->TNext = SCTList;
 					SCTcurr = SCTcurr->TNext;
 				}
 
 			}
-			else if (userID.substr(0,3) == "SCM") {
+			else if (userID.substr(0, 3) == "SCM") {
 				getline(dataSet, name, '|');
 				getline(dataSet, section, '|');
 				getline(dataSet, password, '|');
@@ -105,6 +109,7 @@ void FileHandler::fileautoinput1(){
 					MHead = SCMcurr;
 				}
 				else {
+					for (SCMcurr = MHead; SCMcurr->MNext != NULL; SCMcurr = SCMcurr->MNext) {}
 					SCM* SCMList = new SCM(userID, name, section, password, address, rank);
 					SCMcurr->MNext = SCMList;
 					SCMcurr = SCMcurr->MNext;
@@ -112,6 +117,7 @@ void FileHandler::fileautoinput1(){
 			}
 		}while (!dataSet.eof());
 	}
+	dataSet.close();
 
 }
 

@@ -12,6 +12,7 @@ SCT::SCT(string _TuserID, string _Tname, string _Tsection, string _Tpassword, st
 
 
 
+
 SCT::~SCT(){
 
 };
@@ -34,6 +35,7 @@ VEN::~VEN(){
 
 
 
+
 ROV::ROV(string _RuserID, string _Rname, string _Rsection, string _Rpassword, string Raddress){
 	this->RuserID = _RuserID;
 	this->Rname = _Rname;
@@ -48,6 +50,7 @@ ROV::~ROV(){
 
 
 };
+
 
 
 SCM::SCM(string _MuserID, string _Mname, string _Msection, string _Mpassword, string _Maddress, string _Mrank){

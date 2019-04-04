@@ -16,7 +16,6 @@ public:
 
 public:
 	SCT(string _TuserID, string _Tname, string _Tsection, string _Tpassword, string _Taddress, string _Trank);
-
 	~SCT();
 
 
