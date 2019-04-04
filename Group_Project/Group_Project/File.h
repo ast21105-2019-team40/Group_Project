@@ -7,12 +7,15 @@ class File
 {
 public:
 	string line;
-	File* Next;
+	File* UNext;
+	File* ENext;
+
 
 public:
 	File(string _line) {
 		this->line = _line;
-		this->Next = NULL;
+		this->UNext = NULL;
+		this->ENext = NULL;
 	}
 	~File() {
 

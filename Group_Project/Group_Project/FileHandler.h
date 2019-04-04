@@ -3,6 +3,7 @@
 #include <iostream>
 #include <string>
 #include "User.h"
+#include "Equipment.h"
 using namespace std;
 class FileHandler
 {
@@ -12,15 +13,19 @@ public:
 	SCT* THead = NULL;
 	SCM* MHead = NULL;
 
+	Tent* TeHead = NULL;
+	Stove* StHead = NULL;
+	Lantern* LaHead = NULL;
+
 	string autofilename1;
 	string autofilename2;
 	string inputfilename;
 
 public:
 	FileHandler();
-	void fileautoinput1();
+	void Userfileautoinput();
 	void display();
-	void fileautoinput2();
+	void Eqmfileautoinput();
 	void fileinput1(string filename);
 	void fileinput2(string filename);
 	~FileHandler();

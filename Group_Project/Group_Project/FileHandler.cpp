@@ -11,7 +11,7 @@ FileHandler::FileHandler()
 
 }
 
-void FileHandler::fileautoinput1(){
+void FileHandler::Userfileautoinput(){
 
 	VEN* VENcurr = VHead;
 	ROV* ROVcurr = RHead;
@@ -39,7 +39,6 @@ void FileHandler::fileautoinput1(){
 				getline(dataSet, section, '|');
 				getline(dataSet, password, '|');
 				getline(dataSet, address, '\n');
-				getline(dataSet, endSymbol, '\n');
 
 				if (VENcurr == NULL) {
 					VEN* VENList = new VEN(userID, name, section, password, address);
@@ -59,7 +58,6 @@ void FileHandler::fileautoinput1(){
 				getline(dataSet, section, '|');
 				getline(dataSet, password, '|');
 				getline(dataSet, address, '\n');
-				getline(dataSet, endSymbol, '\n');
 
 				if (ROVcurr == NULL) {
 					ROV* ROVList = new ROV(userID, name, section, password, address);
@@ -80,7 +78,6 @@ void FileHandler::fileautoinput1(){
 				getline(dataSet, password, '|');
 				getline(dataSet, address, '|');
 				getline(dataSet, rank, '\n');
-				getline(dataSet, endSymbol, '\n');
 
 				if (SCTcurr == NULL) {
 					SCT* SCTList = new SCT(userID, name, section, password, address, rank);
@@ -101,7 +98,6 @@ void FileHandler::fileautoinput1(){
 				getline(dataSet, password, '|');
 				getline(dataSet, address, '|');
 				getline(dataSet, rank, '\n');
-				getline(dataSet, endSymbol, '\n');
 
 				if (SCMcurr == NULL) {
 					SCM* SCMList = new SCM(userID, name, section, password, address, rank);
@@ -149,8 +145,66 @@ void FileHandler::display(){
 
 }
 
-void FileHandler::fileautoinput2(){
+void FileHandler::Eqmfileautoinput(){
 
+	Tent* TeCurr = TeHead;
+	Stove* SeCurr = StHead;
+	Lantern* LaCurr = LaHead;
+
+	string itemCode;
+	string itemName;
+	string brand;
+	string type;
+	string date;
+	string condition;
+	string status;
+	string ppl;
+	string tType;
+	string door;
+	string Dlayer;
+	string colour;
+	string stype;
+	string ftype;
+	string actType;
+	string ltype;
+
+	ifstream dataSet;
+
+	dataSet.open(autofilename2);
+	if (!(dataSet.is_open())) {
+		cerr << "Error. The file doesn't open correctly." << endl;
+	}
+	else {
+		do {
+			getline(dataSet, itemCode, '|');
+			if (itemCode.substr(0, 1) == "T") {
+				getline(dataSet, itemName, '|');
+				getline(dataSet, brand, '|');
+				getline(dataSet, type, '|');
+				getline(dataSet, date, '|');
+				getline(dataSet, condition, '|');
+				getline(dataSet, status, '|');
+				getline(dataSet, ppl, '|');
+				getline(dataSet, tType, '|');
+				getline(dataSet, door, '|');
+				getline(dataSet, Dlayer, '|');
+				getline(dataSet, colour, '|');
+
+				if (TeCurr == NULL) {
+					Tent* TentList = new Tent(itemCode, itemName, brand, type, date, condition, status, ppl, tType, door, Dlayer, colour);
+					TeCurr = TentList;
+					TeHead = TeCurr;
+				}
+				else {
+					for (TeCurr = TeHead; TeCurr->TeNext != NULL; TeCurr = TeCurr->TeNext) {}
+					Tent* TentList = new Tent(itemCode, itemName, brand, type, date, condition, status, ppl, tType, door, Dlayer, colour);
+					TeCurr->TeNext = TentList;
+					TeCurr = TeCurr->TeNext;
+				}
+			}
+
+		} while (!dataSet.eof());
+	}
 
 }
 

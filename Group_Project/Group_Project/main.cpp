@@ -12,14 +12,15 @@ int main() {
 	cout << a.Agetter() << endl;
 	cout << a.Pgetter() << endl;
 	
-	FileHandler file;
-	file.fileautoinput1();
-	file.fileautoinput1();
-	file.display();
 	FileList list;
-	list.FileStore();
-	list.FileStore();
+	//list.UserFileStoreAuto();
+	//list.UserFileWriteAuto();
+	list.EqmFileStoreAuto();
+	list.EqmFileWriteAuto();
 	list.FileDisplay();
+	FileHandler file;
+	//file.fileautoinput1();
+	//file.display();
 	system("pause");
 
 

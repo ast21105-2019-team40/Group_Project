@@ -1,6 +1,6 @@
 #include "Equipment.h"
 
-Tent::Tent(string _TitemCode, string _TitemName, string _Tbrand, string _Ttype, string _Tdate, string _Tcondition, string _Tstatus, string _Tppl, string _Tdoor, string _TDlayer, string _Tcolour){
+Tent::Tent(string _TitemCode, string _TitemName, string _Tbrand, string _Ttype, string _Tdate, string _Tcondition, string _Tstatus, string _Tppl, string _tType, string _Tdoor, string _TDlayer, string _Tcolour){
 	this->TitemCode = _TitemCode;
 	this->TitemName = _TitemName;
 	this->Tbrand = _Tbrand;
@@ -9,6 +9,7 @@ Tent::Tent(string _TitemCode, string _TitemName, string _Tbrand, string _Ttype, 
 	this->Tcondition = _Tcondition;
 	this->Tstatus = _Tstatus;
 	this->Tppl = _Tppl;
+	this->tType = _tType;
 	this->Tdoor = _Tdoor;
 	this->TDlayer = _TDlayer;
 	this->Tcolour = _Tcolour;

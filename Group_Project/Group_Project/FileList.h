@@ -7,13 +7,28 @@ using namespace std;
 class FileList
 {
 public:
-	File* Head;
+	File* UHead;
+	File* EHead;
+	int Ucounter;
+	int Ecounter;
 
 public:
 	FileList();
 	~FileList();
-	void FileStore();
-	void FileWrite();
+	void UserFileStoreAuto();
+	void UserFileWriteAuto();
+	void UserFileStore();
+	void UserFileWrite();
+
+	void EqmFileStoreAuto();
+	void EqmFileWriteAuto();
+	void EqmFileStore();
+	void EqmFileWrite();
+
+
+
+
+
 	void FileDisplay();
 
 };

@@ -15,6 +15,7 @@ public:
 	string Tcondition;
 	string Tstatus;
 	string Tppl;
+	string tType;
 	string Tdoor;
 	string TDlayer;
 	string Tcolour;
@@ -22,7 +23,7 @@ public:
 	Tent* TeNext;
 
 public:
-	Tent(string _TitemCode, string _TitemName, string _Tbrand, string _Ttype, string _Tdate, string _Tcondition, string _Tstatus, string _Tppl, string _Tdoor, string _TDlayer, string _Tcolour);
+	Tent(string _TitemCode, string _TitemName, string _Tbrand, string _Ttype, string _Tdate, string _Tcondition, string _Tstatus, string _Tppl, string _tType, string _Tdoor, string _TDlayer, string _Tcolour);
 	~Tent();
 
 
