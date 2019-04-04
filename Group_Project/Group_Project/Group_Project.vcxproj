@@ -117,11 +117,9 @@
   <ItemGroup>
     <ClCompile Include="Action.cpp" />
     <ClCompile Include="Admin.cpp" />
-    <ClCompile Include="Equipment.cpp" />
     <ClCompile Include="FileHandler.cpp" />
     <ClCompile Include="FileList.cpp" />
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="User.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Action.h" />

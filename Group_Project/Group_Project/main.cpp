@@ -12,10 +12,6 @@ int main() {
 	string account;
 	string password;
 	Admin a;
-	SCT sct;
-	VEN ven;
-	SCM scm;
-	ROV rov;
 	Action act;
 
 
