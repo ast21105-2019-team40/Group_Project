@@ -26,8 +26,8 @@ public:
 	void Userfileautoinput();
 	void display();
 	void Eqmfileautoinput();
-	void fileinput1(string filename);
-	void fileinput2(string filename);
+	void Userfileinput(string filename);
+	void Eqmfileinput(string filename);
 	~FileHandler();
 
 };

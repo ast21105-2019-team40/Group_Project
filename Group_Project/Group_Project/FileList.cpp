@@ -16,6 +16,7 @@ void FileList::UserFileStoreAuto(){
 
 	string Fileline;
 	ifstream dataSet;
+	Ucounter = 0;
 
 	UHead = NULL;
 	File* UCurr = UHead;
@@ -54,6 +55,7 @@ void FileList::UserFileStoreAuto(){
 
 
 void FileList::UserFileWriteAuto(){
+	int counter = 0;
 	File* UCurr = UHead;
 	ofstream NewFile;
 	NewFile.open("Newfile.txt");
@@ -63,6 +65,10 @@ void FileList::UserFileWriteAuto(){
 	else {
 		for (; UCurr != NULL; UCurr = UCurr->UNext) {
 			NewFile << UCurr->line + "\n";
+			counter++;
+			if (counter == Ucounter) {
+				break;
+			}
 		}
 	}
 	NewFile.close();
@@ -74,6 +80,7 @@ void FileList::EqmFileStoreAuto(){
 
 	string Fileline;
 	ifstream dataSet;
+	Ecounter = 0;
 
 	EHead = NULL;
 	File* ECurr = EHead;
@@ -111,6 +118,8 @@ void FileList::EqmFileStoreAuto(){
 }
 
 void FileList::EqmFileWriteAuto(){
+	
+	int counter = 0;
 	File* ECurr = EHead;
 	ofstream NewFile;
 	NewFile.open("Newfile.txt");
@@ -120,6 +129,10 @@ void FileList::EqmFileWriteAuto(){
 	else {
 		for (; ECurr != NULL; ECurr = ECurr->ENext) {
 			NewFile << ECurr->line + "\n";
+			counter++;
+			if (counter == Ecounter) {
+				break;
+			}
 		}
 	}
 	NewFile.close();
