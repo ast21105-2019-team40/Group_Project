@@ -202,6 +202,28 @@ void FileHandler::Eqmfileautoinput(){
 					TeCurr = TeCurr->TeNext;
 				}
 			}
+			else if (itemCode.substr(0,1) == "S") {
+				getline(dataSet, itemName, '|');
+				getline(dataSet, brand, '|');
+				getline(dataSet, type, '|');
+				getline(dataSet, date, '|');
+				getline(dataSet, condition, '|');
+				getline(dataSet, status, '|');
+				getline(dataSet, stype, '|');
+				getline(dataSet, ftype, '|');
+
+				if (SeCurr == NULL) {
+					Stove* StoveList = new Stove(itemCode, itemName, brand, type, date, condition, status, stype, ftype);
+					SeCurr = StoveList;
+					StHead = SeCurr;
+				}
+				else {
+					for (SeCurr = StHead; SeCurr->StNext != NULL; SeCurr = SeCurr->StNext) {}
+					Stove* StoveList = new Stove(itemCode, itemName, brand, type, date, condition, status, stype, ftype);
+					SeCurr->StNext = StoveList;
+					SeCurr = SeCurr->StNext;
+				}
+			}
 
 		} while (!dataSet.eof());
 	}
