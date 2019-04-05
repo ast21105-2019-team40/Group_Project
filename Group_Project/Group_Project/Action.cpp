@@ -128,7 +128,26 @@ void Action::doAction(FileHandler& file){
 }
 
 void Action::UserSearchDecision(FileHandler & file){
-	int 
+	int choice;
+	cout << "1.Search All Equipment  2.Search All Avaliable Equipment  3.Search Equipment ID  4.Search Equipment Type" << endl;
+	cout << "Choose the function you want to use: ";
+	cin >> choice;
+	switch (choice)	{	
+		default: UserSearchDecision(file);
+		case 1: {
+
+		}
+		case 2: {
+
+		}
+		case 3: {
+
+		}
+		case 4: {
+
+		}
+
+	}
 
 }
 
