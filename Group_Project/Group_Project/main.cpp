@@ -29,9 +29,9 @@ int main() {
 	file.UserfileinputAuo();
 	file.EqmfileainputAuto();
 	file.LoanfileinputAuto();
-	file.display();
+	//file.display();
 
-	//act.doAction(file);
+	act.doAction(file);
 
 
 	system("pause");
