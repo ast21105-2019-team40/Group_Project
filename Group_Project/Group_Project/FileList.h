@@ -9,8 +9,10 @@ class FileList
 public:
 	File* UHead;
 	File* EHead;
+	File* LHead;
 	int Ucounter;
 	int Ecounter;
+	int Lcounter;
 
 public:
 	FileList();
@@ -24,6 +26,11 @@ public:
 	void EqmFileWriteAuto();
 	void EqmFileStore();
 	void EqmFileWrite();
+
+	void LoanFileStoreAuto();
+	void LoanFileWriteAuto();
+	void LoanFileStore();
+	void LoadFileWrite();
 
 
 

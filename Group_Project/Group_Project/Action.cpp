@@ -34,7 +34,6 @@ void Action::doAction(FileHandler& file){
 		}
 	}
 	else if (account.substr(0, 3) == "VEN") {
-		//FileHandler file;
 		VEN* VENCurr = file.VHead;
 		for (; VENCurr != NULL; VENCurr = VENCurr->VNext) {
 			if (VENCurr->VuserID == account && VENCurr->Vpassword == password) {
@@ -48,6 +47,30 @@ void Action::doAction(FileHandler& file){
 			system("pause");
 			system("cls");
 			doAction(file);
+		}
+		else {
+			int choice;
+			cout << "There are the functions: 1.Search Equment  2.Search Loan Record  3.Change Password  0.End" << endl;
+			cout << "Choose the function you want to use: ";
+			cin >> choice;
+			switch (choice){
+				case 0: 
+					system("cls");
+					cout << "Thanks for using our program!!" << endl;
+					system("pause");
+					exit(0);
+				case 1: {
+					UserSearchDecision(file);
+				}
+				case 2: {
+
+				}
+				case 3: {
+
+				}
+			}
+
+
 		}
 	}
 	else if (account.substr(0,3) == "ROV") {
@@ -101,6 +124,11 @@ void Action::doAction(FileHandler& file){
 		system("cls");
 		doAction(file);
 	}
+
+}
+
+void Action::UserSearchDecision(FileHandler & file){
+	int 
 
 }
 

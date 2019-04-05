@@ -128,6 +128,7 @@
     <ClInclude Include="File.h" />
     <ClInclude Include="FileHandler.h" />
     <ClInclude Include="FileList.h" />
+    <ClInclude Include="Loan.h" />
     <ClInclude Include="User.h" />
   </ItemGroup>
   <ItemGroup>

@@ -6,6 +6,7 @@
 FileList::FileList(){
 	UHead = NULL;
 	EHead = NULL;
+	LHead = NULL;
 }
 
 FileList::~FileList(){
@@ -140,6 +141,70 @@ void FileList::EqmFileWriteAuto(){
 
 }
 
+void FileList::LoanFileStoreAuto(){
+
+	string Fileline;
+	ifstream dataSet;
+	Lcounter = 0;
+
+	LHead = NULL;
+	File* LCurr = LHead;
+	dataSet.open("loan.txt");
+	if (!(dataSet.is_open())) {
+		cerr << "Error. The file doesn't open correctly." << endl;
+	}
+	else {
+		do {
+			while (getline(dataSet, Fileline)) {
+				if (Fileline == "") {
+					continue;
+				}
+				else {
+					if (LCurr == NULL) {
+						File* List = new File(Fileline);
+						LCurr = List;
+						LHead = LCurr;
+						Lcounter++;
+					}
+					else {
+						File* List = new File(Fileline);
+						LCurr->LNext = List;
+						LCurr = LCurr->LNext;
+						Lcounter++;
+					}
+				}
+			}
+		} while (!dataSet.eof());
+
+	}
+	dataSet.close();
+	remove("loan.txt");
+
+
+}
+
+void FileList::LoanFileWriteAuto(){
+	int counter = 0;
+	File* LCurr = LHead;
+	ofstream NewFile;
+	NewFile.open("Newfile.txt");
+	if (!(NewFile.is_open())) {
+		cerr << "Error. The file doesn't open correctly." << endl;
+	}
+	else {
+		for (; LCurr != NULL; LCurr = LCurr->LNext) {
+			NewFile << LCurr->line + "\n";
+			counter++;
+			if (counter == Lcounter) {
+				break;
+			}
+		}
+	}
+	NewFile.close();
+	rename("Newfile.txt", "loan.txt");
+
+}
+
 
 
 void FileList::FileDisplay(){
@@ -147,6 +212,7 @@ void FileList::FileDisplay(){
 	File* UCurr = UHead;
 	int ucounter = 0;
 	int ecounter = 0;
+	int lcounter = 0;
 	for (; UCurr != NULL; UCurr = UCurr->UNext) {
 		cout << UCurr->line << endl;
 		ucounter++;
@@ -163,6 +229,14 @@ void FileList::FileDisplay(){
 			break;
 		}
 		
+	}
+	File* LCurr = LHead;
+	for (; LCurr != NULL; LCurr = LCurr->LNext) {
+		cout << LCurr->line << endl;
+		lcounter++;
+		if (lcounter == Lcounter) {
+			break;
+		}
 	}
 
 

@@ -4,6 +4,7 @@
 #include <string>
 #include "User.h"
 #include "Equipment.h"
+#include "Loan.h"
 using namespace std;
 class FileHandler
 {
@@ -17,17 +18,26 @@ public:
 	Stove* StHead = NULL;
 	Lantern* LaHead = NULL;
 
+	Loan* LHead = NULL;
+
 	string autofilename1;
 	string autofilename2;
+	string autofilename3;
+
+
 	string inputfilename;
 
 public:
 	FileHandler();
-	void Userfileautoinput();
-	void display();
-	void Eqmfileautoinput();
-	void Userfileinput(string filename);
+	void UserfileinputAuo();
+	void EqmfileainputAuto();
+	void LoanfileinputAuto();
+
+
+	void Userfileinput(FileHandler& file, string filename);
 	void Eqmfileinput(string filename);
+
+	void display();
 	~FileHandler();
 
 };

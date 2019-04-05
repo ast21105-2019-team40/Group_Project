@@ -18,17 +18,20 @@ int main() {
 
 	
 	FileList list;
-	list.UserFileStoreAuto();
-	list.UserFileWriteAuto();
-	list.EqmFileStoreAuto();
-	list.EqmFileWriteAuto();
+	//list.UserFileStoreAuto();
+	//list.UserFileWriteAuto();
+	//list.EqmFileStoreAuto();
+	//list.EqmFileWriteAuto();
+	list.LoanFileStoreAuto();
+	list.LoanFileWriteAuto();
 	//list.FileDisplay();
 	FileHandler file;
-	file.Userfileautoinput();
-	file.Eqmfileautoinput();
-	//file.display();
+	file.UserfileinputAuo();
+	file.EqmfileainputAuto();
+	file.LoanfileinputAuto();
+	file.display();
 
-	act.doAction(file);
+	//act.doAction(file);
 
 
 	system("pause");

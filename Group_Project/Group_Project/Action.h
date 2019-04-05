@@ -21,6 +21,7 @@ public:
 	~Action();
 	void doAction(FileHandler& file);
 
+	void UserSearchDecision(FileHandler& file);
 
 	void UserSearchEqmAll(FileHandler& file);
 	void UserSearchEqmType(FileHandler& file);
@@ -37,9 +38,6 @@ public:
 
 
 
-
-
-	void 
 
 };
 

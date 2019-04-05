@@ -1,0 +1,3 @@
+VEN001|CHAN Yik Ming|T004|Family Tent|tent|5/4/2019|12/4/2019|NO
+VEN002|Judy Fung|S001|Camp Stove|stove|5/4/2019|12/4/2019|NO
+SCM001|Daniel Lee|L001|Head Gear Lamp|lantern|5/4/2019|12/4/2019|YES

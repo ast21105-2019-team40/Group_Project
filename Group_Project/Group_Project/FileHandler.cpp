@@ -6,11 +6,12 @@ FileHandler::FileHandler()
 {
 	autofilename1 = "user.txt";
 	autofilename2 = "camp_equipment.txt";
+	autofilename3 = "loan.txt";
 	inputfilename = "";
 
 }
 
-void FileHandler::Userfileautoinput(){
+void FileHandler::UserfileinputAuo(){
 
 	VEN* VENcurr = VHead;
 	ROV* ROVcurr = RHead;
@@ -22,8 +23,6 @@ void FileHandler::Userfileautoinput(){
 	string password;
 	string address;
 	string rank;
-	string startSymbol;
-	string endSymbol;
 	ifstream dataSet;
 	
 	dataSet.open(autofilename1);
@@ -48,7 +47,6 @@ void FileHandler::Userfileautoinput(){
 					for (VENcurr = VHead; VENcurr->VNext != NULL; VENcurr = VENcurr->VNext) {}
 					VEN* VENList = new VEN(userID, name, section, password, address);
 					VENcurr->VNext= VENList;
-					VENcurr = VENcurr->VNext;
 				}
 
 			}
@@ -67,7 +65,6 @@ void FileHandler::Userfileautoinput(){
 					for (ROVcurr = RHead; ROVcurr->RNext != NULL; ROVcurr = ROVcurr->RNext) {}
 					ROV* ROVList = new ROV(userID, name, section, password, address);
 					ROVcurr->RNext = ROVList;
-					ROVcurr = ROVcurr->RNext;
 				}
 
 			}
@@ -87,7 +84,6 @@ void FileHandler::Userfileautoinput(){
 					for (SCTcurr = THead; SCTcurr->TNext != NULL; SCTcurr = SCTcurr->TNext) {}
 					SCT* SCTList = new SCT(userID, name, section, password, address, rank);
 					SCTcurr->TNext = SCTList;
-					SCTcurr = SCTcurr->TNext;
 				}
 
 			}
@@ -107,7 +103,6 @@ void FileHandler::Userfileautoinput(){
 					for (SCMcurr = MHead; SCMcurr->MNext != NULL; SCMcurr = SCMcurr->MNext) {}
 					SCM* SCMList = new SCM(userID, name, section, password, address, rank);
 					SCMcurr->MNext = SCMList;
-					SCMcurr = SCMcurr->MNext;
 				}
 			}
 		}while (!dataSet.eof());
@@ -116,53 +111,8 @@ void FileHandler::Userfileautoinput(){
 
 }
 
-void FileHandler::display(){
 
-	VEN* VENcurr = VHead;
-	for (; VENcurr != NULL; VENcurr = VENcurr->VNext) {
-		cout << VENcurr->VuserID << " | " << VENcurr->Vname << " | " << VENcurr->Vsection << " | " << VENcurr->Vpassword << " | " << VENcurr->Vaddress << endl;
-	}
-
-	ROV* ROVcurr = RHead;
-	for (; ROVcurr != NULL; ROVcurr = ROVcurr->RNext) {
-		cout << ROVcurr->RuserID << " | " << ROVcurr->Rname << " | " << ROVcurr->Rsection << " | " << ROVcurr->Rpassword << " | " << ROVcurr->Raddress << endl;
-	}
-
-	SCT* SCTcurr = THead;
-	for (; SCTcurr != NULL; SCTcurr = SCTcurr->TNext) {
-		cout << SCTcurr->TuserID << " | " << SCTcurr->Tname << " | " << SCTcurr->Tsection << " | " << SCTcurr->Tpassword << " | " << SCTcurr->Taddress << " | " << SCTcurr->Trank << endl;
-	}
-
-	SCM* SCMcurr = MHead;
-	for (; SCMcurr != NULL; SCMcurr = SCMcurr->MNext) {
-		cout << SCMcurr->MuserID << " | " << SCMcurr->Mname << " | " << SCMcurr->Msection << " | " << SCMcurr->Mpassword << " | " << SCMcurr->Maddress << " | " << SCMcurr->Mrank << endl;
-	}
-
-	Tent* TeCurr = TeHead;
-	for (; TeCurr != NULL; TeCurr = TeCurr->TeNext) {
-		cout << TeCurr->TitemCode << " | " << TeCurr->TitemName << " | " << TeCurr->Tbrand << " | " << TeCurr->Ttype << " | " << TeCurr->Tdate << " | " << TeCurr->Tcondition << " | " 
-			 << TeCurr->Tstatus << " | " << TeCurr->Tppl << " | " << TeCurr->tType << " | " << TeCurr->Tdoor << " | " << TeCurr->TDlayer << " | " << TeCurr->Tcolour << endl;
-	}
-
-	Stove* SeCurr = StHead;
-	for (; SeCurr != NULL; SeCurr = SeCurr->StNext) {
-		cout << SeCurr->SitemCode << " | " << SeCurr->SitemName << " | " << SeCurr->Sbrand << " | " << SeCurr->Stype << " | " << SeCurr->Sdate << " | " << SeCurr->Scondition << " | " 
-			 << SeCurr->Sstatus << " | " << SeCurr->Sstype << " | " << SeCurr->Sftype << endl;
-	}
-
-	Lantern* LaCurr = LaHead;
-	for (; LaCurr != NULL; LaCurr = LaCurr->LaNext) {
-		cout << LaCurr->LitemCode << " | " << LaCurr->LitemName << " | " << LaCurr->Lbrand << " | " << LaCurr->Ltype << " | " << LaCurr->Ldate << " | " << LaCurr->Lcondition << " | " 
-			 << LaCurr->Lstatus << " | " << LaCurr->LactType << " | " << LaCurr->Lltype << " | " << LaCurr->Lftype << endl;
-	}
-
-	
-
-	system("pause");
-
-}
-
-void FileHandler::Eqmfileautoinput(){
+void FileHandler::EqmfileainputAuto(){
 
 	Tent* TeCurr = TeHead;
 	Stove* SeCurr = StHead;
@@ -216,7 +166,6 @@ void FileHandler::Eqmfileautoinput(){
 					for (TeCurr = TeHead; TeCurr->TeNext != NULL; TeCurr = TeCurr->TeNext) {}
 					Tent* TentList = new Tent(itemCode, itemName, brand, type, date, condition, status, ppl, tType, door, Dlayer, colour);
 					TeCurr->TeNext = TentList;
-					TeCurr = TeCurr->TeNext;
 				}
 			}
 			else if (itemCode.substr(0,1) == "S") {
@@ -238,7 +187,6 @@ void FileHandler::Eqmfileautoinput(){
 					for (SeCurr = StHead; SeCurr->StNext != NULL; SeCurr = SeCurr->StNext) {}
 					Stove* StoveList = new Stove(itemCode, itemName, brand, type, date, condition, status, stype, ftype);
 					SeCurr->StNext = StoveList;
-					SeCurr = SeCurr->StNext;
 				}
 			}
 			else if (itemCode.substr(0,1) == "L") {
@@ -261,7 +209,6 @@ void FileHandler::Eqmfileautoinput(){
 					for (LaCurr = LaHead; LaCurr->LaNext != NULL; LaCurr = LaCurr->LaNext) {}
 					Lantern* LanternList = new Lantern(itemCode, itemName, brand, type, date, condition, status, actType, ltype, ftype);
 					LaCurr->LaNext = LanternList;
-					LaCurr = LaCurr->LaNext;
 				}
 			}
 
@@ -270,13 +217,111 @@ void FileHandler::Eqmfileautoinput(){
 
 }
 
-void FileHandler::Userfileinput(string filename){
+void FileHandler::LoanfileinputAuto(){
+	Loan* LoCurr = LHead;
+	string userid;
+	string username;
+	string itemCode;
+	string itemName;
+	string itemType;
+	string Bdate;
+	string Rdate;
+	string status;
+	ifstream dataSet;
+
+	dataSet.open(autofilename3);
+	if (!(dataSet.is_open())) {
+		cerr << "Error. The file doesn't open correctly." << endl;
+	}
+	else {
+		do {
+			getline(dataSet, userid, '|');
+			if (userid != "") {
+				getline(dataSet, username, '|');
+				getline(dataSet, itemCode, '|');
+				getline(dataSet, itemName, '|');
+				getline(dataSet, itemType, '|');
+				getline(dataSet, Bdate, '|');
+				getline(dataSet, Rdate, '|');
+				getline(dataSet, status, '\n');
+
+				if (LoCurr == NULL) {
+					Loan* LoanList = new Loan(userid, username, itemCode, itemName, itemType, Bdate, Rdate, status);
+					LoCurr = LoanList;
+					LHead = LoCurr;
+
+				}
+				else {
+					for (LoCurr = LHead; LoCurr->LNext != NULL; LoCurr = LoCurr->LNext) {}
+					Loan* LoanList = new Loan(userid, username, itemCode, itemName, itemType, Bdate, Rdate, status);
+					LoCurr->LNext = LoanList;
+				}
+			}
+		} while (!dataSet.eof());
+	}
+
+
+}
+
+void FileHandler::Userfileinput(FileHandler& file, string filename){
 
 
 }
 
 void FileHandler::Eqmfileinput(string filename){
 
+
+}
+
+void FileHandler::display() {
+
+	VEN* VENcurr = VHead;
+	for (; VENcurr != NULL; VENcurr = VENcurr->VNext) {
+		cout << VENcurr->VuserID << " | " << VENcurr->Vname << " | " << VENcurr->Vsection << " | " << VENcurr->Vpassword << " | " << VENcurr->Vaddress << endl;
+	}
+
+	ROV* ROVcurr = RHead;
+	for (; ROVcurr != NULL; ROVcurr = ROVcurr->RNext) {
+		cout << ROVcurr->RuserID << " | " << ROVcurr->Rname << " | " << ROVcurr->Rsection << " | " << ROVcurr->Rpassword << " | " << ROVcurr->Raddress << endl;
+	}
+
+	SCT* SCTcurr = THead;
+	for (; SCTcurr != NULL; SCTcurr = SCTcurr->TNext) {
+		cout << SCTcurr->TuserID << " | " << SCTcurr->Tname << " | " << SCTcurr->Tsection << " | " << SCTcurr->Tpassword << " | " << SCTcurr->Taddress << " | " << SCTcurr->Trank << endl;
+	}
+
+	SCM* SCMcurr = MHead;
+	for (; SCMcurr != NULL; SCMcurr = SCMcurr->MNext) {
+		cout << SCMcurr->MuserID << " | " << SCMcurr->Mname << " | " << SCMcurr->Msection << " | " << SCMcurr->Mpassword << " | " << SCMcurr->Maddress << " | " << SCMcurr->Mrank << endl;
+	}
+
+	Tent* TeCurr = TeHead;
+	for (; TeCurr != NULL; TeCurr = TeCurr->TeNext) {
+		cout << TeCurr->TitemCode << " | " << TeCurr->TitemName << " | " << TeCurr->Tbrand << " | " << TeCurr->Ttype << " | " << TeCurr->Tdate << " | " << TeCurr->Tcondition << " | "
+			<< TeCurr->Tstatus << " | " << TeCurr->Tppl << " | " << TeCurr->tType << " | " << TeCurr->Tdoor << " | " << TeCurr->TDlayer << " | " << TeCurr->Tcolour << endl;
+	}
+
+	Stove* SeCurr = StHead;
+	for (; SeCurr != NULL; SeCurr = SeCurr->StNext) {
+		cout << SeCurr->SitemCode << " | " << SeCurr->SitemName << " | " << SeCurr->Sbrand << " | " << SeCurr->Stype << " | " << SeCurr->Sdate << " | " << SeCurr->Scondition << " | "
+			<< SeCurr->Sstatus << " | " << SeCurr->Sstype << " | " << SeCurr->Sftype << endl;
+	}
+
+	Lantern* LaCurr = LaHead;
+	for (; LaCurr != NULL; LaCurr = LaCurr->LaNext) {
+		cout << LaCurr->LitemCode << " | " << LaCurr->LitemName << " | " << LaCurr->Lbrand << " | " << LaCurr->Ltype << " | " << LaCurr->Ldate << " | " << LaCurr->Lcondition << " | "
+			<< LaCurr->Lstatus << " | " << LaCurr->LactType << " | " << LaCurr->Lltype << " | " << LaCurr->Lftype << endl;
+	}
+
+	Loan* LoCurr = LHead;
+	for (; LoCurr != NULL; LoCurr = LoCurr->LNext) {
+		cout << LoCurr->userid << "|" << LoCurr->username << "|" << LoCurr->itemCode << "|" << LoCurr->itemName << "|" << LoCurr->itemType << "|" << LoCurr->Bdate << "|"
+			<< LoCurr->Rdate << "|" << LoCurr->status << endl;
+	}
+
+
+
+	system("pause");
 
 }
 

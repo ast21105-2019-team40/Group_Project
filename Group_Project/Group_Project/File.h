@@ -9,6 +9,7 @@ public:
 	string line;
 	File* UNext;
 	File* ENext;
+	File* LNext;
 
 
 public:
@@ -17,6 +18,8 @@ public:
 		this->line = _line;
 		this->UNext = NULL;
 		this->ENext = NULL;
+		this->LNext = NULL;
+
 	}
 	~File() {
 
