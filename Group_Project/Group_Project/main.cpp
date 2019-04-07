@@ -47,10 +47,10 @@ int main() {
 
 	
 	FileList list;
-	//list.UserFileStoreAuto();
-	//list.UserFileWriteAuto();
-	//list.EqmFileStoreAuto();
-	//list.EqmFileWriteAuto();
+	list.UserFileStoreAuto();
+	list.UserFileWriteAuto();
+	list.EqmFileStoreAuto();
+	list.EqmFileWriteAuto();
 	list.LoanFileStoreAuto();
 	list.LoanFileWriteAuto();
 	//list.FileDisplay();

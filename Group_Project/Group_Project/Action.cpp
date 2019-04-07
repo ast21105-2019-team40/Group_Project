@@ -246,7 +246,7 @@ void Action::UserActionDecision(FileHandler & file){
 
 void Action::UserSearchDecision(FileHandler & file){
 	int choice;
-	cout << "1.Search All Equipment  2.Search All Avaliable Equipment  3.Search Equipment ID  4.Search Equipment Type" << endl;
+	cout << "1. Search All Equipment  2. Search All Avaliable Equipment  3. Search Equipment ID  4. Search Equipment Type  5. Search All Good Condition Equipment" << endl;
 	cout << "Choose the function you want to use: ";
 	cin >> choice;
 	switch (choice) {
@@ -268,6 +268,11 @@ void Action::UserSearchDecision(FileHandler & file){
 	}
 	case 4: {
 		UserSearchEqmType(file);
+		UserActionDecision(file);
+
+	}
+	case 5: {
+		UserSearchEqmCondition(file);
 		UserActionDecision(file);
 
 	}
@@ -367,6 +372,36 @@ void Action::UserSearchEqmType(FileHandler & file){
 	system("cls");
 
 
+}
+
+void Action::UserSearchEqmCondition(FileHandler & file){
+	
+	Tent* TeCurr = file.TeHead;
+	for (; TeCurr != NULL; TeCurr = TeCurr->TeNext) {
+		if (TeCurr->Tcondition == "good") {
+			cout << TeCurr->TitemCode << " | " << TeCurr->TitemName << " | " << TeCurr->Tbrand << " | " << TeCurr->Ttype << " | " << TeCurr->Tdate << " | " << TeCurr->Tcondition << " | "
+				<< TeCurr->Tstatus << " | " << TeCurr->Tppl << " | " << TeCurr->tType << " | " << TeCurr->Tdoor << " | " << TeCurr->TDlayer << " | " << TeCurr->Tcolour << endl;
+		}
+	}
+
+	Stove* SeCurr = file.StHead;
+	for (; SeCurr != NULL; SeCurr = SeCurr->StNext) {
+		if (SeCurr->Scondition == "good") {
+			cout << SeCurr->SitemCode << " | " << SeCurr->SitemName << " | " << SeCurr->Sbrand << " | " << SeCurr->Stype << " | " << SeCurr->Sdate << " | " << SeCurr->Scondition << " | "
+				<< SeCurr->Sstatus << " | " << SeCurr->Sstype << " | " << SeCurr->Sftype << endl;
+		}
+	}
+
+	Lantern* LaCurr = file.LaHead;
+	for (; LaCurr != NULL; LaCurr = LaCurr->LaNext) {
+		if (LaCurr->Lcondition == "good") {
+			cout << LaCurr->LitemCode << " | " << LaCurr->LitemName << " | " << LaCurr->Lbrand << " | " << LaCurr->Ltype << " | " << LaCurr->Ldate << " | " << LaCurr->Lcondition << " | "
+				<< LaCurr->Lstatus << " | " << LaCurr->LactType << " | " << LaCurr->Lltype << " | " << LaCurr->Lftype << endl;
+		}
+	}
+
+	system("pause");
+	system("cls");
 }
 
 void Action::UserSearchEqmID(FileHandler & file){
