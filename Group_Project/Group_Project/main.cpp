@@ -3,6 +3,7 @@
 #include "UserNode.h"
 #include "FileList.h"
 #include "FileHandler.h"
+#include "User.h"
 #include <iostream>
 #include <string>
 using namespace std;
@@ -24,9 +25,9 @@ void mainpage(FileHandler& file) {
 	if (account == "admin") {
 		Admin admin;
 	}
-	else if (accounttype == "VEN" || accounttype == "ROV" || accounttype == "SCT" || accounttype == "SCM") {
-		Action action;
-		action.UserLogin(account, password, file);
+	else if (accounttype == "VEN") {
+		VENuser user;
+		user.UserLogin(account, password, file);
 	}
 	else {
 		cout << "account or password not correct, please enter again." << endl;
