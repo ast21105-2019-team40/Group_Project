@@ -120,15 +120,17 @@
     <ClCompile Include="FileHandler.cpp" />
     <ClCompile Include="FileList.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="User.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Action.h" />
     <ClInclude Include="Admin.h" />
-    <ClInclude Include="Equipment.h" />
+    <ClInclude Include="EquipmentNode.h" />
     <ClInclude Include="File.h" />
     <ClInclude Include="FileHandler.h" />
     <ClInclude Include="FileList.h" />
-    <ClInclude Include="Loan.h" />
+    <ClInclude Include="LoanNode.h" />
+    <ClInclude Include="User.h" />
     <ClInclude Include="UserNode.h" />
   </ItemGroup>
   <ItemGroup>

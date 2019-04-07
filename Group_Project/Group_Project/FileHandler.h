@@ -3,8 +3,8 @@
 #include <iostream>
 #include <string>
 #include "UserNode.h"
-#include "Equipment.h"
-#include "Loan.h"
+#include "EquipmentNode.h"
+#include "LoanNode.h"
 using namespace std;
 class FileHandler
 {

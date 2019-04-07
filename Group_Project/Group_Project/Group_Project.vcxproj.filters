@@ -30,12 +30,12 @@
     <ClCompile Include="Action.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="User.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Admin.h">
-      <Filter>Source Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Equipment.h">
       <Filter>Source Files</Filter>
     </ClInclude>
     <ClInclude Include="FileHandler.h">
@@ -50,10 +50,16 @@
     <ClInclude Include="Action.h">
       <Filter>Source Files</Filter>
     </ClInclude>
-    <ClInclude Include="Loan.h">
+    <ClInclude Include="UserNode.h">
       <Filter>Source Files</Filter>
     </ClInclude>
-    <ClInclude Include="UserNode.h">
+    <ClInclude Include="EquipmentNode.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="LoanNode.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="User.h">
       <Filter>Source Files</Filter>
     </ClInclude>
   </ItemGroup>

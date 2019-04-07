@@ -3,7 +3,7 @@
 #include <iostream>
 #include <string>
 #include "Admin.h"
-#include "Equipment.h"
+#include "EquipmentNode.h"
 #include "File.h"
 #include "FileHandler.h"
 #include "FileList.h"
