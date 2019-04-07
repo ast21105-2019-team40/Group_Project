@@ -233,7 +233,6 @@ void Action::UserActionDecision(FileHandler & file){
 		exit(0);
 	case 1: {
 		UserSearchDecision(file);
-		UserActionDecision(file);
 	}
 	case 2: {
 
@@ -464,6 +463,10 @@ void Action::UserSearchEqmID(FileHandler & file){
 		system("pause");
 		system("cls");
 	}
+}
+
+void Action::UserSearchLoanRecord(FileHandler & file){
+
 }
 
 
