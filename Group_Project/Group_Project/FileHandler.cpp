@@ -1,5 +1,5 @@
 #include "FileHandler.h"
-#include "User.h"
+#include "UserNode.h"
 #include <fstream>
 
 FileHandler::FileHandler()

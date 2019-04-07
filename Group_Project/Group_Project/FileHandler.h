@@ -2,7 +2,7 @@
 #define FileHandler_H
 #include <iostream>
 #include <string>
-#include "User.h"
+#include "UserNode.h"
 #include "Equipment.h"
 #include "Loan.h"
 using namespace std;
