@@ -19,7 +19,10 @@ public:
 public:
 	Action();
 	~Action();
-	void doAction(FileHandler& file);
+	//void doAction(FileHandler& file);
+
+	void UserLogin(string account, string password, FileHandler& file);
+	void UserActionDecision(FileHandler & file);
 
 	void UserSearchDecision(FileHandler& file);
 
