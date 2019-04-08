@@ -8,6 +8,8 @@
 #include "FileHandler.h"
 #include "FileList.h"
 #include "UserNode.h"
+#include "Loan.h"
+#include "LoanNode.h"
 using namespace std;
 
 class Action
@@ -21,7 +23,7 @@ public:
 	~Action();
 	//void doAction(FileHandler& file);
 
-	void UserLogin(string account, string password, FileHandler& file);
+	bool UserLogin(string _account, string _password, FileHandler& file);
 	void UserActionDecision(FileHandler & file);
 
 	void UserSearchDecision(FileHandler& file);
@@ -32,6 +34,7 @@ public:
 	void UserSearchEqmType(FileHandler& file);
 	void UserSearchEqmCondition(FileHandler& file);
 	void UserSearchEqmID(FileHandler& file);
+	void UserSearchEqmStatus_Condition(FileHandler& file);
 
 	void UserSearchLoanRecord(FileHandler& file);
 	void UserBorrow(FileHandler& file);

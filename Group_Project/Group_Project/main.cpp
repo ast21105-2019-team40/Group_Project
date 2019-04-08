@@ -13,6 +13,7 @@ void mainpage(FileHandler& file) {
 	string account;
 	string password;
 	string accounttype;
+	bool check = false;
 
 	cout << "Wellcom to our program" << endl;
 	cout << "Please enter your account: ";
@@ -24,10 +25,56 @@ void mainpage(FileHandler& file) {
 
 	if (account == "admin") {
 		Admin admin;
+		check = admin.AdminLogin(account, password, file);
+		if (check == false) {
+			cout << "account or password not correct, please enter again." << endl;
+			system("pause");
+			system("cls");
+			mainpage(file);
+		}
+		else {
+
+		}
 	}
 	else if (accounttype == "VEN") {
 		VENuser user;
-		user.UserLogin(account, password, file);
+		check = user.UserLogin(account, password, file);
+		if (check == false) {
+			mainpage(file);
+		}
+		else {
+			user.UserActionDecision(file);
+		}
+	}
+	else if (accounttype == "ROV") {
+		ROVuser user;
+		check = user.UserLogin(account, password, file);
+		if (check == false) {
+			mainpage(file);
+		}
+		else {
+			user.UserActionDecision(file);
+		}
+	}
+	else if (accounttype == "SCT") {
+		SCTuser user;
+		check = user.UserLogin(account, password, file);
+		if (check == false) {
+			mainpage(file);
+		}
+		else {
+			user.UserActionDecision(file);
+		}
+	}
+	else if (accounttype == "SCM") {
+		SCMuser user;
+		check = user.UserLogin(account, password, file);
+		if (check == false) {
+			mainpage(file);
+		}
+		else {
+			user.UserActionDecision(file);
+		}
 	}
 	else {
 		cout << "account or password not correct, please enter again." << endl;
