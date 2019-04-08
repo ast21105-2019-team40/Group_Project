@@ -4,6 +4,7 @@
 #include "UserNode.h"
 #include <iostream>
 #include <string>
+#include <fstream>
 
 class LoanControl
 {
@@ -14,6 +15,7 @@ public:
 public:
 	LoanControl();
 	int ReturnCredit(string account, FileHandler& file);
+	void WriteLoanfile(FileHandler& file);
 
 
 	~LoanControl();

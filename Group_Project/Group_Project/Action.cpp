@@ -207,7 +207,7 @@ bool Action::UserLogin(string _account, string _password, FileHandler & file) {
 void Action::UserActionDecision(FileHandler & file){
 
 	int choice;
-	cout << "There are the functions: 1.Search Equment  2.Search Loan Record  3.Change Password  0.End" << endl;
+	cout << "There are the functions: 1.Search Equment 2.Borrow Equipment 3.Search Loan Record  4.Change Password  0.End" << endl;
 	cout << "Choose the function you want to use: ";
 	cin >> choice;
 	switch (choice) {
@@ -220,6 +220,7 @@ void Action::UserActionDecision(FileHandler & file){
 		UserSearchDecision(file);
 	}
 	case 2: {
+		UserBorrow(file);
 
 	}
 	case 3: {
@@ -490,7 +491,7 @@ void Action::UserSearchLoanRecord(FileHandler & file){
 
 }
 
-void Action::UserBorrow(FileHandler & file){
+void Action::UserBorrow(FileHandler & file) {
 
 	time_t now;
 	struct tm nowLocal;
@@ -502,7 +503,7 @@ void Action::UserBorrow(FileHandler & file){
 
 	int date = nowLocal.tm_mday;
 	int month = nowLocal.tm_mon + 1;
-	int year = nowLocal.tm_year+1900;
+	int year = nowLocal.tm_year + 1900;
 
 	string userid;
 	string username;
@@ -513,7 +514,7 @@ void Action::UserBorrow(FileHandler & file){
 	string Rdate;
 	string status;
 
-	
+
 	int credit;
 	int borrowed = 0;
 
@@ -528,51 +529,70 @@ void Action::UserBorrow(FileHandler & file){
 	}
 	credit = credit - borrowed;
 
-	cout << "Enter the equipment ID that you want to borrew: ";
-	cin >> itemCode;
-	cout << endl;
-	if (itemCode.substr(0, 1) == "T") {
-		Tent* TeCurr = file.TeHead;
-		for (; TeCurr != NULL; TeCurr = TeCurr->TeNext) {
-			if (TeCurr->TitemCode == itemCode && TeCurr->Tstatus == "in") {
-				userid = account;
-				username = name;
-				//itemCode = TeCurr->TitemCode;
-				itemName = TeCurr->TitemName;
-				itemType = TeCurr->Ttype;
-				Bdate = to_string(date) + "/" + to_string(month) + "/" + to_string(year);
-				int returnDate = date + 7;
-				if (returnDate > 31) {
-					returnDate = returnDate - 31;
-					month++;
-					if (month > 12) {
-						month = month - 12;
-						year++;
+
+	if (credit != 0) {
+		cout << "Enter the equipment ID that you want to borrew: ";
+		cin >> itemCode;
+		cout << endl;
+		if (itemCode.substr(0, 1) == "T") {
+			Tent* TeCurr = file.TeHead;
+			for (; TeCurr != NULL; TeCurr = TeCurr->TeNext) {
+				if (TeCurr->TitemCode == itemCode && TeCurr->Tstatus == "in") {
+					userid = account;
+					username = name;
+					itemCode = TeCurr->TitemCode;
+					itemName = TeCurr->TitemName;
+					itemType = TeCurr->Ttype;
+					Bdate = to_string(date) + "/" + to_string(month) + "/" + to_string(year);
+					int returnDate = date + 7;
+					if (returnDate > 31) {
+						returnDate = returnDate - 31;
+						month++;
+						if (month > 12) {
+							month = month - 12;
+							year++;
+						}
 					}
+					Rdate = to_string(returnDate) + "/" + to_string(month) + "/" + to_string(year);
+					status = "NO";
+					TeCurr->Tstatus = "out";
+					break;
 				}
-				Rdate = to_string(returnDate) + "/" + to_string(month) + "/" + to_string(year);
-				status = "NO";
-				TeCurr->Tstatus = "out";
-				break;
 			}
-		}
-		if (itemName != "") {
+			if (itemName != "") {
+				Loan* LoCurr = file.LHead;
+				if (LoCurr == NULL) {
+					Loan* LoanList = new Loan(userid, username, itemCode, itemName, itemType, Bdate, Rdate, status);
+					LoCurr = LoanList;
+					file.LHead = LoCurr;
+
+				}
+				else {
+					for (LoCurr = file.LHead; LoCurr->LNext != NULL; LoCurr = LoCurr->LNext) {}
+					Loan* LoanList = new Loan(userid, username, itemCode, itemName, itemType, Bdate, Rdate, status);
+					LoCurr->LNext = LoanList;
+				}
+			}
+
+
 
 		}
+		else if (itemCode.substr(0, 1) == "S") {
 
+		}
+		else if (itemCode.substr(0, 1) == "L") {
 
-
-	}
-	else if (itemCode.substr(0, 1) == "S") {
-
-	}
-	else if (itemCode.substr(0, 1) == "L") {
-
+		}
+		else {
+			cout << "No such item" << endl;
+		}
+		loan.WriteLoanfile(file);
 	}
 	else {
-		cout << "No such item" << endl;
+		cout << "You cannot borrow equipment since your credit has full" << endl;
 	}
-
+	system("pause");
+	system("cls");
 
 }
 

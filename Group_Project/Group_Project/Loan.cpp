@@ -76,6 +76,24 @@ int LoanControl::ReturnCredit(string account, FileHandler & file)
 	return credit;
 }
 
+void LoanControl::WriteLoanfile(FileHandler & file){
+
+	Loan* LoCurr = file.LHead;
+	ofstream NewFile;
+	NewFile.open("Newfile.txt");
+	if (!(NewFile.is_open())) {
+		cerr << "Error. The file doesn't open correctly." << endl;
+	}
+	else {
+		for (; LoCurr != NULL; LoCurr = LoCurr->LNext) {
+			NewFile << LoCurr->userid + "|" + LoCurr->username + "|" + LoCurr->itemCode + "|" + LoCurr->itemName + "|" + LoCurr->itemType + "|" + LoCurr->Bdate + "|" + "|" + LoCurr->Rdate + "|" + LoCurr->status + "\n";
+		}
+	}
+	NewFile.close();
+	remove("loan.txt");
+	rename("Newfile.txt", "loan.txt");
+}
+
 LoanControl::~LoanControl()
 {
 }
