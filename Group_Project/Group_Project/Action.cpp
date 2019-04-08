@@ -3,6 +3,7 @@
 Action::Action(){
 	account = "";
 	password = "";
+	name = "";
 }
 
 Action::~Action(){
@@ -139,6 +140,7 @@ bool Action::UserLogin(string _account, string _password, FileHandler & file) {
 		for (; VENCurr != NULL; VENCurr = VENCurr->VNext) {
 			if (VENCurr->VuserID == account && VENCurr->Vpassword == password) {
 				cout << "Wellcome " << VENCurr->Vname << endl;
+				name = VENCurr->Vname;
 				check = true;
 				break;
 			}
@@ -155,6 +157,7 @@ bool Action::UserLogin(string _account, string _password, FileHandler & file) {
 		for (; ROVCurr != NULL; ROVCurr = ROVCurr->RNext) {
 			if (ROVCurr->RuserID == account && ROVCurr->Rpassword == password) {
 				cout << "Wellcom " << ROVCurr->Rname << endl;
+				name = ROVCurr->Rname;
 				check = true;
 				break;
 			}
@@ -170,6 +173,7 @@ bool Action::UserLogin(string _account, string _password, FileHandler & file) {
 		for (; SCTCurr != NULL; SCTCurr = SCTCurr->TNext) {
 			if (SCTCurr->TuserID == account && SCTCurr->Tpassword == password) {
 				cout << "Wellcom " << SCTCurr->Tname << endl;
+				name = SCTCurr->Tname;
 				check = true;
 				break;
 			}
@@ -186,6 +190,7 @@ bool Action::UserLogin(string _account, string _password, FileHandler & file) {
 		for (; SCMCurr != NULL; SCMCurr = SCMCurr->MNext) {
 			if (SCMCurr->MuserID == account && SCMCurr->Mpassword == password) {
 				cout << "Wellcom " << SCMCurr->Mname << endl;
+				name = SCMCurr->Mname;
 				check = true;
 				break;
 			}
@@ -486,6 +491,19 @@ void Action::UserSearchLoanRecord(FileHandler & file){
 }
 
 void Action::UserBorrow(FileHandler & file){
+
+	time_t now;
+	struct tm nowLocal;
+	now = time(NULL);
+	nowLocal = *localtime(&now);
+
+
+
+
+	int date = nowLocal.tm_mday;
+	int month = nowLocal.tm_mon + 1;
+	int year = nowLocal.tm_year+1900;
+
 	string userid;
 	string username;
 	string itemCode;
@@ -513,7 +531,47 @@ void Action::UserBorrow(FileHandler & file){
 	cout << "Enter the equipment ID that you want to borrew: ";
 	cin >> itemCode;
 	cout << endl;
-	
+	if (itemCode.substr(0, 1) == "T") {
+		Tent* TeCurr = file.TeHead;
+		for (; TeCurr != NULL; TeCurr = TeCurr->TeNext) {
+			if (TeCurr->TitemCode == itemCode && TeCurr->Tstatus == "in") {
+				userid = account;
+				username = name;
+				//itemCode = TeCurr->TitemCode;
+				itemName = TeCurr->TitemName;
+				itemType = TeCurr->Ttype;
+				Bdate = to_string(date) + "/" + to_string(month) + "/" + to_string(year);
+				int returnDate = date + 7;
+				if (returnDate > 31) {
+					returnDate = returnDate - 31;
+					month++;
+					if (month > 12) {
+						month = month - 12;
+						year++;
+					}
+				}
+				Rdate = to_string(returnDate) + "/" + to_string(month) + "/" + to_string(year);
+				status = "NO";
+				TeCurr->Tstatus = "out";
+				break;
+			}
+		}
+		if (itemName != "") {
+
+		}
+
+
+
+	}
+	else if (itemCode.substr(0, 1) == "S") {
+
+	}
+	else if (itemCode.substr(0, 1) == "L") {
+
+	}
+	else {
+		cout << "No such item" << endl;
+	}
 
 
 }

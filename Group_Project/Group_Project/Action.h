@@ -10,6 +10,7 @@
 #include "UserNode.h"
 #include "Loan.h"
 #include "LoanNode.h"
+#include <ctime>
 using namespace std;
 
 class Action
@@ -17,6 +18,7 @@ class Action
 public:
 	string account;
 	string password;
+	string name;
 
 public:
 	Action();
