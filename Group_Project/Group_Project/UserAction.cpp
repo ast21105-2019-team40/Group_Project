@@ -1,4 +1,4 @@
-#include "Action.h"
+#include "UserAction.h"
 
 Action::Action(){
 	account = "";
@@ -207,7 +207,7 @@ bool Action::UserLogin(string _account, string _password, FileHandler & file) {
 void Action::UserActionDecision(FileHandler & file){
 
 	int choice;
-	cout << "There are the functions: 1.Search Equment 2.Borrow Equipment 3.Search Loan Record  4.Change Password  0.End" << endl;
+	cout << "There are the functions: 1.Search Equment 2.Borrow Equipment  3.Search Loan Record  4.Change Password  0.End" << endl;
 	cout << "Choose the function you want to use: ";
 	cin >> choice;
 	switch (choice) {
@@ -515,12 +515,9 @@ void Action::UserBorrow(FileHandler & file) {
 	string Rdate;
 	string status;
 
-
-	int credit;
-	int borrowed = 0;
-
 	LoanControl loan;
-	credit = loan.ReturnCredit(account, file);
+	int credit = loan.ReturnCredit(account, file);
+	int borrowed = 0;
 
 	Loan* LoCurr = file.LHead;
 	for (; LoCurr != NULL; LoCurr = LoCurr->LNext) {
@@ -545,7 +542,7 @@ void Action::UserBorrow(FileHandler & file) {
 						itemName = TeCurr->TitemName;
 						itemType = TeCurr->Ttype;
 						Bdate = to_string(date) + "/" + to_string(month) + "/" + to_string(year);
-						int returnDate = date + 7;
+						int returnDate = date + 14;
 						if (returnDate > 31) {
 							returnDate = returnDate - 31;
 							month++;
@@ -603,6 +600,21 @@ void Action::UserBorrow(FileHandler & file) {
 	system("pause");
 	system("cls");
 	UserActionDecision(file);
+
+}
+
+void Action::UserReturn(FileHandler & file){
+
+
+
+	LoanControl loan;
+	int credit = loan.ReturnCredit(account, file);
+
+	if (credit == 0) {
+		
+	}
+
+
 
 }
 

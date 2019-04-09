@@ -1,5 +1,5 @@
-#ifndef Loan_H
-#define Loan_H
+#ifndef LoanNode_H
+#define LoanNode_H
 #include <iostream>
 #include <string>
 using namespace std;

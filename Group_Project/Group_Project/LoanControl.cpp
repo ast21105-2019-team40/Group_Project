@@ -1,8 +1,6 @@
-#include "Loan.h"
+#include "LoanControl.h"
 
 LoanControl::LoanControl(){
-	post = "";
-	rank = "";
 	credit = 0;
 }
 

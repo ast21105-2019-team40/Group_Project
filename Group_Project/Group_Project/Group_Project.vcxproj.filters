@@ -27,13 +27,13 @@
     <ClCompile Include="FileList.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Action.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="User.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Loan.cpp">
+    <ClCompile Include="LoanControl.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="UserAction.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -50,9 +50,6 @@
     <ClInclude Include="File.h">
       <Filter>Source Files</Filter>
     </ClInclude>
-    <ClInclude Include="Action.h">
-      <Filter>Source Files</Filter>
-    </ClInclude>
     <ClInclude Include="UserNode.h">
       <Filter>Source Files</Filter>
     </ClInclude>
@@ -65,7 +62,10 @@
     <ClInclude Include="User.h">
       <Filter>Source Files</Filter>
     </ClInclude>
-    <ClInclude Include="Loan.h">
+    <ClInclude Include="LoanControl.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="UserAction.h">
       <Filter>Source Files</Filter>
     </ClInclude>
   </ItemGroup>

@@ -1,15 +1,9 @@
-#ifndef Action_H
-#define Action_H
+#ifndef UserAction_H
+#define UserAction_H
 #include <iostream>
 #include <string>
-#include "Admin.h"
-#include "EquipmentNode.h"
-#include "File.h"
 #include "FileHandler.h"
-#include "FileList.h"
-#include "UserNode.h"
-#include "Loan.h"
-#include "LoanNode.h"
+#include "LoanControl.h"
 #include <ctime>
 using namespace std;
 
