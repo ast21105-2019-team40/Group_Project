@@ -1,12 +1,12 @@
 #include "UserAction.h"
 
-Action::Action(){
+Action::Action() {
 	account = "";
 	password = "";
 	name = "";
 }
 
-Action::~Action(){
+Action::~Action() {
 
 
 }
@@ -21,7 +21,7 @@ Action::~Action(){
 	cout << "Please enter your password: ";
 	cin >> password;
 	check = false;
-	
+
 	if (account == "admin") {
 		Admin admin;
 		if (admin.Agetter() == account && admin.Pgetter() == password) {
@@ -56,7 +56,7 @@ Action::~Action(){
 			cout << "Choose the function you want to use: ";
 			cin >> choice;
 			switch (choice){
-				case 0: 
+				case 0:
 					system("cls");
 					cout << "Thanks for using our program!!" << endl;
 					system("pause");
@@ -139,7 +139,6 @@ bool Action::UserLogin(string _account, string _password, FileHandler & file) {
 		VEN* VENCurr = file.VHead;
 		for (; VENCurr != NULL; VENCurr = VENCurr->VNext) {
 			if (VENCurr->VuserID == account && VENCurr->Vpassword == password) {
-				cout << "Wellcome " << VENCurr->Vname << endl;
 				name = VENCurr->Vname;
 				check = true;
 				break;
@@ -156,7 +155,6 @@ bool Action::UserLogin(string _account, string _password, FileHandler & file) {
 		ROV* ROVCurr = file.RHead;
 		for (; ROVCurr != NULL; ROVCurr = ROVCurr->RNext) {
 			if (ROVCurr->RuserID == account && ROVCurr->Rpassword == password) {
-				cout << "Wellcom " << ROVCurr->Rname << endl;
 				name = ROVCurr->Rname;
 				check = true;
 				break;
@@ -172,7 +170,6 @@ bool Action::UserLogin(string _account, string _password, FileHandler & file) {
 		SCT* SCTCurr = file.THead;
 		for (; SCTCurr != NULL; SCTCurr = SCTCurr->TNext) {
 			if (SCTCurr->TuserID == account && SCTCurr->Tpassword == password) {
-				cout << "Wellcom " << SCTCurr->Tname << endl;
 				name = SCTCurr->Tname;
 				check = true;
 				break;
@@ -189,7 +186,6 @@ bool Action::UserLogin(string _account, string _password, FileHandler & file) {
 		SCM* SCMCurr = file.MHead;
 		for (; SCMCurr != NULL; SCMCurr = SCMCurr->MNext) {
 			if (SCMCurr->MuserID == account && SCMCurr->Mpassword == password) {
-				cout << "Wellcom " << SCMCurr->Mname << endl;
 				name = SCMCurr->Mname;
 				check = true;
 				break;
@@ -201,16 +197,23 @@ bool Action::UserLogin(string _account, string _password, FileHandler & file) {
 			system("cls");
 		}
 	}
+	system("cls");
 	return check;
 }
 
-void Action::UserActionDecision(FileHandler & file){
+void Action::UserActionDecision(FileHandler & file) {
 
 	int choice;
-	cout << "There are the functions: 1.Search Equment 2.Borrow Equipment  3.Search Loan Record  4.Change Password  0.End" << endl;
+	cout << "Wellcome " << name << endl;
+	cout << "There are the functions: 1.Search Equment  2.Borrow Equipment  3.Search Loan Record  4.Return Equipment  5.Change Password  6.Deep Searching  0.End" << endl;
 	cout << "Choose the function you want to use: ";
 	cin >> choice;
 	switch (choice) {
+	default:
+		cout << "Input wrongly, please try again!!" << endl;
+		system("pause");
+		system("cls");
+		UserActionDecision(file);
 	case 0:
 		system("cls");
 		cout << "Thanks for using our program!!" << endl;
@@ -221,10 +224,19 @@ void Action::UserActionDecision(FileHandler & file){
 	}
 	case 2: {
 		UserBorrow(file);
-
 	}
 	case 3: {
-
+		UserSearchLoanRecord(file);
+	}
+	case 4: {
+		UserReturn(file);
+	}
+	case 5: {
+		UserChangePassword(account, file);
+	}
+	case 6: {
+		DeepSearching(file);
+		//UserActionDecision(file);
 	}
 	}
 }
@@ -271,7 +283,7 @@ void Action::UserSearchDecision(FileHandler & file) {
 
 }
 
-void Action::UserSearchEqmAll(FileHandler & file){
+void Action::UserSearchEqmAll(FileHandler & file) {
 	Tent* TeCurr = file.TeHead;
 	for (; TeCurr != NULL; TeCurr = TeCurr->TeNext) {
 		cout << TeCurr->TitemCode << " | " << TeCurr->TitemName << " | " << TeCurr->Tbrand << " | " << TeCurr->Ttype << " | " << TeCurr->Tdate << " | " << TeCurr->Tcondition << " | "
@@ -283,7 +295,7 @@ void Action::UserSearchEqmAll(FileHandler & file){
 		cout << SeCurr->SitemCode << " | " << SeCurr->SitemName << " | " << SeCurr->Sbrand << " | " << SeCurr->Stype << " | " << SeCurr->Sdate << " | " << SeCurr->Scondition << " | "
 			<< SeCurr->Sstatus << " | " << SeCurr->Sstype << " | " << SeCurr->Sftype << endl;
 	}
-	
+
 	Lantern* LaCurr = file.LaHead;
 	for (; LaCurr != NULL; LaCurr = LaCurr->LaNext) {
 		cout << LaCurr->LitemCode << " | " << LaCurr->LitemName << " | " << LaCurr->Lbrand << " | " << LaCurr->Ltype << " | " << LaCurr->Ldate << " | " << LaCurr->Lcondition << " | "
@@ -297,8 +309,8 @@ void Action::UserSearchEqmAll(FileHandler & file){
 
 }
 
-void Action::UserSearchEqmStatus(FileHandler & file){
-	
+void Action::UserSearchEqmStatus(FileHandler & file) {
+
 	Tent* TeCurr = file.TeHead;
 	for (; TeCurr != NULL; TeCurr = TeCurr->TeNext) {
 		if (TeCurr->Tstatus == "in") {
@@ -328,7 +340,7 @@ void Action::UserSearchEqmStatus(FileHandler & file){
 
 }
 
-void Action::UserSearchEqmType(FileHandler & file){
+void Action::UserSearchEqmType(FileHandler & file) {
 	string type;
 	cout << "Input the equipment type you want to search: ";
 	cin >> type;
@@ -364,8 +376,8 @@ void Action::UserSearchEqmType(FileHandler & file){
 
 }
 
-void Action::UserSearchEqmCondition(FileHandler & file){
-	
+void Action::UserSearchEqmCondition(FileHandler & file) {
+
 	Tent* TeCurr = file.TeHead;
 	for (; TeCurr != NULL; TeCurr = TeCurr->TeNext) {
 		if (TeCurr->Tcondition == "good") {
@@ -394,7 +406,7 @@ void Action::UserSearchEqmCondition(FileHandler & file){
 	system("cls");
 }
 
-void Action::UserSearchEqmID(FileHandler & file){
+void Action::UserSearchEqmID(FileHandler & file) {
 
 	string id;
 	bool check = false;
@@ -487,7 +499,49 @@ void Action::UserSearchEqmStatus_Condition(FileHandler & file) {
 
 }
 
-void Action::UserSearchLoanRecord(FileHandler & file){
+void Action::DeepSearching(FileHandler & file){
+	string type;
+	cout << "input the equipment type: ";
+	cin >> type;
+	if (type == "tent") {
+		eqm.SearchTentDeep(type, file);
+		UserActionDecision(file);
+	}
+	else if (type == "stove") {
+		eqm.SearchStoveDeep(type, file);
+		UserActionDecision(file);
+	}
+	else if (type == "lantern") {
+		eqm.SearchLanternDeep(type, file);
+		UserActionDecision(file);
+	}
+	else {
+		cout << "No such type of equipment." << endl;
+		system("pause");
+		system("cls");
+		UserActionDecision(file);
+	}
+
+}
+
+void Action::UserSearchLoanRecord(FileHandler & file) {
+
+	bool check = false;
+
+	Loan* LoCurr = file.LHead;
+	for (; LoCurr != NULL; LoCurr = LoCurr->LNext) {
+		if (account == LoCurr->userid && LoCurr->status == "NO") {
+			check = true;
+			cout << LoCurr->userid << " | " << LoCurr->username << " | " << LoCurr->itemCode << " | " << LoCurr->itemName << " | " << LoCurr->itemType << " | " << LoCurr->Bdate << " | "
+				<< LoCurr->Rdate << " | " << LoCurr->status << endl;
+		}
+	}
+	if (check == false) {
+		cout << "No Record find." << endl;
+	}
+	system("pause");
+	system("cls");
+	UserActionDecision(file);
 
 }
 
@@ -515,19 +569,13 @@ void Action::UserBorrow(FileHandler & file) {
 	string Rdate;
 	string status;
 
-	LoanControl loan;
 	int credit = loan.ReturnCredit(account, file);
-	int borrowed = 0;
+	int borrowed = loan.ReturnBorrow(account, file);
 
-	Loan* LoCurr = file.LHead;
-	for (; LoCurr != NULL; LoCurr = LoCurr->LNext) {
-		if (account == LoCurr->userid && LoCurr->status == "NO") {
-			borrowed++;
-		}
-	}
 	credit = credit - borrowed;
 
 	if (credit > 0) {
+		cout << "Your credits: " << credit << endl;
 		cout << "Enter the equipment ID that you want to borrew: ";
 		cin >> itemCode;
 		if (itemCode.substr(0, 1) == "T") {
@@ -535,23 +583,14 @@ void Action::UserBorrow(FileHandler & file) {
 			for (; TeCurr != NULL; TeCurr = TeCurr->TeNext) {
 				if (TeCurr->TitemCode == itemCode) {
 					check = true;
-					if (TeCurr->Tstatus == "in") {
+					if (TeCurr->Tcondition == "good" && TeCurr->Tstatus == "in") {
 						userid = account;
 						username = name;
 						itemCode = TeCurr->TitemCode;
 						itemName = TeCurr->TitemName;
 						itemType = TeCurr->Ttype;
 						Bdate = to_string(date) + "/" + to_string(month) + "/" + to_string(year);
-						int returnDate = date + 14;
-						if (returnDate > 31) {
-							returnDate = returnDate - 31;
-							month++;
-							if (month > 12) {
-								month = month - 12;
-								year++;
-							}
-						}
-						Rdate = to_string(returnDate) + "/" + to_string(month) + "/" + to_string(year);
+						Rdate = loan.ReturnDate(date, month, year);
 						status = "NO";
 						TeCurr->Tstatus = "out";
 						break;
@@ -563,36 +602,83 @@ void Action::UserBorrow(FileHandler & file) {
 						UserActionDecision(file);
 					}
 				}
-			}if (check == false) {
-				cout << "No such equipment" << endl;
-				system("pause");
-				system("cls");
-				UserActionDecision(file);
-			}
-			else if (itemName != "") {
-				Loan* LoCurr = file.LHead;
-				if (LoCurr == NULL) {
-					Loan* LoanList = new Loan(userid, username, itemCode, itemName, itemType, Bdate, Rdate, status);
-					LoCurr = LoanList;
-					file.LHead = LoCurr;
-				}
-				else {
-					for (LoCurr = file.LHead; LoCurr->LNext != NULL; LoCurr = LoCurr->LNext) {}
-					Loan* LoanList = new Loan(userid, username, itemCode, itemName, itemType, Bdate, Rdate, status);
-					LoCurr->LNext = LoanList;
-				}
 			}
 		}
 		else if (itemCode.substr(0, 1) == "S") {
+			Stove* StCurr = file.StHead;
+			for (; StCurr != NULL; StCurr = StCurr->StNext) {
+				if (StCurr->SitemCode == itemCode) {
+					check = true;
+					if (StCurr->Scondition == "good" && StCurr->Sstatus == "in") {
+						userid = account;
+						username = name;
+						itemCode = StCurr->SitemCode;
+						itemName = StCurr->SitemName;
+						itemType = StCurr->Stype;
+						Bdate = to_string(date) + "/" + to_string(month) + "/" + to_string(year);
+						Rdate = loan.ReturnDate(date, month, year);
+						status = "NO";
+						StCurr->Sstatus = "out";
+						break;
+					}
+					else {
+						cout << "That Equipment is not avaliable." << endl;
+						system("pause");
+						system("cls");
+						UserActionDecision(file);
+					}
+				}
+			}
 
 		}
 		else if (itemCode.substr(0, 1) == "L") {
-
+			Lantern* LaCurr = file.LaHead;
+			for (; LaCurr != NULL; LaCurr = LaCurr->LaNext) {
+				if (LaCurr->LitemCode == itemCode) {
+					check = true;
+					if (LaCurr->Lcondition == "good" && LaCurr->Lstatus == "in") {
+						userid = account;
+						username = name;
+						itemCode = LaCurr->LitemCode;
+						itemName = LaCurr->LitemName;
+						itemType = LaCurr->Ltype;
+						Bdate = to_string(date) + "/" + to_string(month) + "/" + to_string(year);
+						Rdate = loan.ReturnDate(date, month, year);
+						status = "NO";
+						LaCurr->Lstatus = "out";
+						break;
+					}
+					else {
+						cout << "That Equipment is not avaliable." << endl;
+						system("pause");
+						system("cls");
+						UserActionDecision(file);
+					}
+				}
+			}
 		}
-		else {
-			cout << "No such item" << endl;
+		if (check == false) {
+			cout << "No such equipment" << endl;
+			system("pause");
+			system("cls");
+			UserActionDecision(file);
+		}
+		else if (itemName != "") {
+			Loan* LoCurr = file.LHead;
+			if (LoCurr == NULL) {
+				Loan* LoanList = new Loan(userid, username, itemCode, itemName, itemType, Bdate, Rdate, status);
+				LoCurr = LoanList;
+				file.LHead = LoCurr;
+			}
+			else {
+				for (LoCurr = file.LHead; LoCurr->LNext != NULL; LoCurr = LoCurr->LNext) {}
+				Loan* LoanList = new Loan(userid, username, itemCode, itemName, itemType, Bdate, Rdate, status);
+				LoCurr->LNext = LoanList;
+			}
+			cout << "You have borrowed Equipment: " << itemCode << endl;
 		}
 		loan.WriteLoanfile(file);
+		loan.WriteEqmfile(file);
 	}
 	else {
 		cout << "You cannot borrow equipment since your credit has full" << endl;
@@ -603,18 +689,126 @@ void Action::UserBorrow(FileHandler & file) {
 
 }
 
-void Action::UserReturn(FileHandler & file){
+void Action::UserReturn(FileHandler & file) {
 
-
-
-	LoanControl loan;
 	int credit = loan.ReturnCredit(account, file);
+	int borrowed = loan.ReturnBorrow(account, file);
 
-	if (credit == 0) {
-		
+	string code;
+	string returnCode;
+	bool check = false;
+
+	credit = credit - borrowed;
+
+	if (borrowed == 0) {
+		cout << "You haven't borrow any equipments, no need for return." << endl;
+		system("pause");
+		system("cls");
+		UserActionDecision(file);
 	}
+	else {
+		cout << "Input the EquipmentID that you want to return: ";
+		cin >> code;
 
+		Loan* LoCurr = file.LHead;
+		for (; LoCurr != NULL; LoCurr = LoCurr->LNext) {
+			if (account == LoCurr->userid && LoCurr->itemCode == code && LoCurr->status == "NO") {
+				LoCurr->status = "YES";
+				returnCode = LoCurr->itemCode;
+				if (returnCode.substr(0, 1) == "T") {
+					Tent* TeCurr = file.TeHead;
+					for (; TeCurr != NULL; TeCurr = TeCurr->TeNext) {
+						if (returnCode == TeCurr->TitemCode && TeCurr->Tstatus == "out") {
+							TeCurr->Tstatus = "in";
+							break;
+						}
+					}
+				}
+				else if (returnCode.substr(0, 1) == "S") {
+					Stove* StCurr = file.StHead;
+					for (; StCurr != NULL; StCurr = StCurr->StNext) {
+						if (returnCode == StCurr->SitemCode && StCurr->Sstatus == "out") {
+							StCurr->Sstatus = "in";
+							break;
+						}
+					}
 
+				}
+				else if (returnCode.substr(0, 1) == "L") {
+					Lantern* LaCurr = file.LaHead;
+					for (; LaCurr != NULL; LaCurr = LaCurr->LaNext) {
+						if (returnCode == LaCurr->LitemCode && LaCurr->Lstatus == "out") {
+							LaCurr->Lstatus = "in";
+							break;
+						}
+					}
+
+				}
+				check = true;
+				break;
+			}
+		}
+		loan.WriteLoanfile(file);
+		loan.WriteEqmfile(file);
+
+		if (check == true) {
+			cout << "Equipment " << code << " has been returned" << endl;
+		}
+		else {
+			cout << "No such record" << endl;
+		}
+		system("pause");
+		system("cls");
+		UserActionDecision(file);
+	}
+}
+
+void Action::UserChangePassword(string account, FileHandler & file){
+
+	string password;
+	cout << "Enter your new password: ";
+	cin >> password;
+	if (account.substr(0, 3) == "VEN") {
+		VEN* VENCurr = file.VHead;
+		for (; VENCurr != NULL; VENCurr = VENCurr->VNext) {
+			if (VENCurr->VuserID == account) {
+				VENCurr->Vpassword = password;
+				break;
+			}
+		}
+	}
+	else if (account.substr(0, 3) == "ROV") {
+		ROV* ROVCurr = file.RHead;
+		for (; ROVCurr != NULL; ROVCurr = ROVCurr->RNext) {
+			if (ROVCurr->RuserID == account) {
+				ROVCurr->Rpassword = password;
+				break;
+			}
+		}
+	}
+	else if (account.substr(0, 3) == "SCT") {
+		SCT* SCTCurr = file.THead;
+		for (; SCTCurr != NULL; SCTCurr = SCTCurr->TNext) {
+			if (SCTCurr->TuserID == account) {
+				SCTCurr->Tpassword = password;
+				break;
+			}
+		}
+	}
+	else if (account.substr(0, 3) == "SCM") {
+		SCM* SCMCurr = file.MHead;
+		for (; SCMCurr != NULL; SCMCurr = SCMCurr->MNext) {
+			if (SCMCurr->MuserID == account) {
+				SCMCurr->Mpassword = password;
+				break;
+			}
+		}
+	}
+	loan.WriteUserfile(file);
+	cout << "password has been updated." << endl;
+	system("pause");
+	system("cls");
+	UserActionDecision(file);
 
 }
 

@@ -1,5 +1,5 @@
-#ifndef Equipment_H
-#define Equipment_H
+#ifndef EquipmentNode_H
+#define EquipmentNode_H
 #include <iostream>
 #include <string>
 using namespace std;
