@@ -236,7 +236,6 @@ void Action::UserActionDecision(FileHandler & file) {
 	}
 	case 6: {
 		DeepSearching(file);
-		//UserActionDecision(file);
 	}
 	}
 }

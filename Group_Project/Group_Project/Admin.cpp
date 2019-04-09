@@ -22,7 +22,6 @@ bool Admin::AdminLogin(string _account, string _password, FileHandler & file) {
 		check = true;
 	}
 	return check;
-
 }
 
 Admin::~Admin(){
