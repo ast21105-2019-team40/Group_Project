@@ -1,5 +1,1 @@
-VEN001|CHAN Yik Ming|T004|Family Tent|tent|5/4/2019|||12/4/2019|NO
-VEN002|Judy Fung|S001|Camp Stove|stove|5/4/2019|||12/4/2019|NO
-SCM001|Daniel Lee|L001|Head Gear Lamp|lantern|5/4/2019|||12/4/2019|YES
-SCT001|Michael Tam|L005|Cardinol Navigator|lantern|5/4/2019|||12/4/2019|NO
-SCM003|Timmy Cheung|T010|Tunnel Tent|tent|9/4/2019||16/4/2019|NO
+SCT001|Michael Tam|T006|4 Persons Dome|tent|9/4/2019|16/4/2019|NO

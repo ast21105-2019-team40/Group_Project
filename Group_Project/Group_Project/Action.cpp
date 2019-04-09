@@ -504,6 +504,7 @@ void Action::UserBorrow(FileHandler & file) {
 	int date = nowLocal.tm_mday;
 	int month = nowLocal.tm_mon + 1;
 	int year = nowLocal.tm_year + 1900;
+	bool check = false;
 
 	string userid;
 	string username;
@@ -529,43 +530,54 @@ void Action::UserBorrow(FileHandler & file) {
 	}
 	credit = credit - borrowed;
 
-
-	if (credit != 0) {
+	if (credit > 0) {
 		cout << "Enter the equipment ID that you want to borrew: ";
 		cin >> itemCode;
-		cout << endl;
 		if (itemCode.substr(0, 1) == "T") {
 			Tent* TeCurr = file.TeHead;
 			for (; TeCurr != NULL; TeCurr = TeCurr->TeNext) {
-				if (TeCurr->TitemCode == itemCode && TeCurr->Tstatus == "in") {
-					userid = account;
-					username = name;
-					itemCode = TeCurr->TitemCode;
-					itemName = TeCurr->TitemName;
-					itemType = TeCurr->Ttype;
-					Bdate = to_string(date) + "/" + to_string(month) + "/" + to_string(year);
-					int returnDate = date + 7;
-					if (returnDate > 31) {
-						returnDate = returnDate - 31;
-						month++;
-						if (month > 12) {
-							month = month - 12;
-							year++;
+				if (TeCurr->TitemCode == itemCode) {
+					check = true;
+					if (TeCurr->Tstatus == "in") {
+						userid = account;
+						username = name;
+						itemCode = TeCurr->TitemCode;
+						itemName = TeCurr->TitemName;
+						itemType = TeCurr->Ttype;
+						Bdate = to_string(date) + "/" + to_string(month) + "/" + to_string(year);
+						int returnDate = date + 7;
+						if (returnDate > 31) {
+							returnDate = returnDate - 31;
+							month++;
+							if (month > 12) {
+								month = month - 12;
+								year++;
+							}
 						}
+						Rdate = to_string(returnDate) + "/" + to_string(month) + "/" + to_string(year);
+						status = "NO";
+						TeCurr->Tstatus = "out";
+						break;
 					}
-					Rdate = to_string(returnDate) + "/" + to_string(month) + "/" + to_string(year);
-					status = "NO";
-					TeCurr->Tstatus = "out";
-					break;
+					else {
+						cout << "That Equipment is not avaliable." << endl;
+						system("pause");
+						system("cls");
+						UserActionDecision(file);
+					}
 				}
+			}if (check == false) {
+				cout << "No such equipment" << endl;
+				system("pause");
+				system("cls");
+				UserActionDecision(file);
 			}
-			if (itemName != "") {
+			else if (itemName != "") {
 				Loan* LoCurr = file.LHead;
 				if (LoCurr == NULL) {
 					Loan* LoanList = new Loan(userid, username, itemCode, itemName, itemType, Bdate, Rdate, status);
 					LoCurr = LoanList;
 					file.LHead = LoCurr;
-
 				}
 				else {
 					for (LoCurr = file.LHead; LoCurr->LNext != NULL; LoCurr = LoCurr->LNext) {}
@@ -573,9 +585,6 @@ void Action::UserBorrow(FileHandler & file) {
 					LoCurr->LNext = LoanList;
 				}
 			}
-
-
-
 		}
 		else if (itemCode.substr(0, 1) == "S") {
 
@@ -593,6 +602,7 @@ void Action::UserBorrow(FileHandler & file) {
 	}
 	system("pause");
 	system("cls");
+	UserActionDecision(file);
 
 }
 

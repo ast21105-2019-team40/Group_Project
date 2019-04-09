@@ -86,7 +86,7 @@ void LoanControl::WriteLoanfile(FileHandler & file){
 	}
 	else {
 		for (; LoCurr != NULL; LoCurr = LoCurr->LNext) {
-			NewFile << LoCurr->userid + "|" + LoCurr->username + "|" + LoCurr->itemCode + "|" + LoCurr->itemName + "|" + LoCurr->itemType + "|" + LoCurr->Bdate + "|" + "|" + LoCurr->Rdate + "|" + LoCurr->status + "\n";
+			NewFile << LoCurr->userid + "|" + LoCurr->username + "|" + LoCurr->itemCode + "|" + LoCurr->itemName + "|" + LoCurr->itemType + "|" + LoCurr->Bdate + "|" + LoCurr->Rdate + "|" + LoCurr->status + "\n";
 		}
 	}
 	NewFile.close();
