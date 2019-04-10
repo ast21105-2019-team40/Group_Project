@@ -3,6 +3,7 @@
 #include <iostream>
 #include <string>
 #include "FileHandler.h"
+#include "UserAction.h"
 using namespace std;
 
 class Admin
@@ -16,6 +17,11 @@ public:
 	string Agetter();//account getter
 	string Pgetter();//password getter
 	bool AdminLogin(string _account, string _password, FileHandler& file);
+	void AdminDecision(FileHandler& file);
+	void AdminDisplay(FileHandler& file);
+	void Searching(FileHandler& file);
+
+	
 	~Admin();
 };
 

@@ -227,6 +227,7 @@ void Action::UserActionDecision(FileHandler & file) {
 	}
 	case 3: {
 		UserSearchLoanRecord(file);
+		UserActionDecision(file);
 	}
 	case 4: {
 		UserReturn(file);
@@ -302,10 +303,6 @@ void Action::UserSearchEqmAll(FileHandler & file) {
 	}
 	system("pause");
 	system("cls");
-
-
-
-
 }
 
 void Action::UserSearchEqmStatus(FileHandler & file) {
@@ -529,7 +526,7 @@ void Action::UserSearchLoanRecord(FileHandler & file) {
 
 	Loan* LoCurr = file.LHead;
 	for (; LoCurr != NULL; LoCurr = LoCurr->LNext) {
-		if (account == LoCurr->userid && LoCurr->status == "NO") {
+		if (account == LoCurr->userid) {
 			check = true;
 			cout << LoCurr->userid << " | " << LoCurr->username << " | " << LoCurr->itemCode << " | " << LoCurr->itemName << " | " << LoCurr->itemType << " | " << LoCurr->Bdate << " | "
 				<< LoCurr->Rdate << " | " << LoCurr->status << endl;
@@ -540,8 +537,6 @@ void Action::UserSearchLoanRecord(FileHandler & file) {
 	}
 	system("pause");
 	system("cls");
-	UserActionDecision(file);
-
 }
 
 void Action::UserBorrow(FileHandler & file) {

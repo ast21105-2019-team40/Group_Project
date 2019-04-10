@@ -8,3 +8,6 @@ SCT003|Sophia Lam|L002|Head Gear Lamp|lantern|10/4/2019|24/4/2019|NO
 SCM003|Timmy Cheung|L005|Cardinol Navigator|lantern|10/4/2019|24/4/2019|NO
 VEN001|CHAN Yik Ming|S002|Camp Stove|stove|10/4/2019|24/4/2019|NO
 SCT001|Michael Tam|T009|Ultralight Pack|tent|10/4/2019|24/4/2019|NO
+VEN002|Judy Fung|T008|Ultralight Pack|tent|10/4/2019|24/4/2019|YES
+VEN002|Judy Fung|S004|Camp Stove|stove|10/4/2019|24/4/2019|YES
+VEN002|Judy Fung|L001|Head Gear Lamp|lantern|10/4/2019|24/4/2019|YES

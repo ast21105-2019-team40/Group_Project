@@ -1,5 +1,5 @@
 VEN001|CHAN Yik Ming|Venture Scout|13041990|2A Oscar Bldg, NP, HK
-VEN002|Judy Fung|Venture Scout|24121991|31C Block 14 Orchard Court
+VEN002|Judy Fung|Venture Scout|11111111|31C Block 14 Orchard Court
 ROV001|Amy CHu|Rover Scout|11031988|14G Block 1 Harmony Garden
 ROV002|Yammy Tai|Rover Scout|14011997|16B Block 31 Jade Garden
 SCT001|Michael Tam|Scout|16051996|9B Odeon House, Causeway Bay|Member

@@ -37,7 +37,10 @@ public:
 	void Userfileinput(FileHandler& file, string filename);
 	void Eqmfileinput(string filename);
 
-	void display();
+	void displayAll();
+	void displayUserfile();
+	void displayEqmfile();
+	void displayLoanfile();
 	~FileHandler();
 
 };
