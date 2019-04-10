@@ -104,27 +104,27 @@ void Admin::Searching(FileHandler & file){
 		cout << "Wrong input, please try again!!";
 		AdminDecision(file);
 	case 1: {
-		action.UserSearchEqmAll(file);
+		UserSearchEqmAll(file);
 		AdminDecision(file);
 	}
 	case 2: {
-		action.UserSearchEqmStatus(file);
+		UserSearchEqmStatus(file);
 		AdminDecision(file);
 	}
 	case 3: {
-		action.UserSearchEqmID(file);
+		UserSearchEqmID(file);
 		AdminDecision(file);
 	}
 	case 4: {
-		action.UserSearchEqmType(file);
+		UserSearchEqmType(file);
 		AdminDecision(file);
 	}
 	case 5: {
-		action.UserSearchEqmCondition(file);
+		UserSearchEqmCondition(file);
 		AdminDecision(file);
 	}
 	case 6: {
-		action.UserSearchEqmStatus_Condition(file);
+		UserSearchEqmStatus_Condition(file);
 		AdminDecision(file);
 	}
 	}

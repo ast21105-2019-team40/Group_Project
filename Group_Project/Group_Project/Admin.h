@@ -8,7 +8,7 @@
 #include "LoanControl.h"
 using namespace std;
 
-class Admin
+class Admin : public Action
 {
 private:
 	string account;
