@@ -76,6 +76,14 @@ void FileList::UserFileWriteAuto(){
 	rename("Newfile.txt", "user.txt");
 }
 
+void FileList::UserFileStore()
+{
+}
+
+void FileList::UserFileWrite()
+{
+}
+
 
 void FileList::EqmFileStoreAuto(){
 
@@ -139,6 +147,10 @@ void FileList::EqmFileWriteAuto(){
 	NewFile.close();
 	rename("Newfile.txt", "camp_equipment.txt");
 
+}
+
+void FileList::EqmFileStore()
+{
 }
 
 void FileList::LoanFileStoreAuto(){

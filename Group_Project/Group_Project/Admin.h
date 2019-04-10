@@ -2,8 +2,10 @@
 #define Admin_H
 #include <iostream>
 #include <string>
+#include <fstream>
 #include "FileHandler.h"
 #include "UserAction.h"
+#include "LoanControl.h"
 using namespace std;
 
 class Admin
@@ -20,6 +22,12 @@ public:
 	void AdminDecision(FileHandler& file);
 	void AdminDisplay(FileHandler& file);
 	void Searching(FileHandler& file);
+	void UpdateEquipmentByID(FileHandler& file);
+	void ProduceTextfile(FileHandler& file);
+	void InsertUserFile(FileHandler& file);
+	void InsertEqmFile(FileHandler& file);
+	void InsertLoanFile(FileHandler& file);
+
 
 	
 	~Admin();

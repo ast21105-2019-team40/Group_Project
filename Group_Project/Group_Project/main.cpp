@@ -15,7 +15,7 @@ void mainpage(FileHandler& file) {
 	string accounttype;
 	bool check = false;
 
-	cout << "Wellcom to our program" << endl;
+	cout << "Wellcome to our program" << endl;
 	cout << "Please enter your account: ";
 	cin >> account;
 	cout << "Please enter your password: ";
@@ -33,7 +33,7 @@ void mainpage(FileHandler& file) {
 			mainpage(file);
 		}
 		else {
-
+			admin.AdminDecision(file);
 		}
 	}
 	else if (accounttype == "VEN") {

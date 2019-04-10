@@ -111,7 +111,6 @@ void FileHandler::UserfileinputAuo(){
 
 }
 
-
 void FileHandler::EqmfileainputAuto(){
 
 	Tent* TeCurr = TeHead;
