@@ -21,13 +21,14 @@ bool Admin::AdminLogin(string _account, string _password, FileHandler & file) {
 	if (account == _account && password == _password) {
 		check = true;
 	}
+	system("cls");
 	return check;
 }
 
 void Admin::AdminDecision(FileHandler & file){
 	int choice;
 	cout << "Wellcome Admin" << endl;
-	cout << "There are the function: 1.Display  2.Searching  3.Produce a txt file  4.Insert File  0.Exit" << endl;
+	cout << "There are the function: 1.Display  2.Searching  3.Produce a txt file  4.Insert File  5.Delete file  6.Update Equipment file  0.Exit" << endl;
 	cout << "Enter your choice: ";
 	cin >> choice;
 	switch (choice)
@@ -49,11 +50,19 @@ void Admin::AdminDecision(FileHandler & file){
 		Searching(file);
 	}
 	case 3: {
-		ProduceTextfile(file);
+		ProduceFileDecision(file);
 		AdminDecision(file);
 	}
 	case 4: {
-
+		Insert(file);
+	}
+	case 5: {
+		Deletefile();
+		AdminDecision(file);
+	}
+	case 6: {
+		UpdateEquipmentByID(file);
+		AdminDecision(file);
 	}
 	}
 
@@ -90,13 +99,11 @@ void Admin::AdminDisplay(FileHandler & file) {
 	}
 }
 
-
-
 void Admin::Searching(FileHandler & file){
 
 	int choice;
 	cout << "1.Search All Equipment  2. Search All Avaliable Equipment  3.Search Equipment ID  4.Search Equipment Type  " << endl;
-	cout << "5.Search All Good Condition Equipment  6.Search All Avaliable Equipment with Good Condition" << endl;
+	cout << "5.Search All Good Condition Equipment  6.Search All Avaliable Equipment with Good Condition  7.Deep Search" << endl;
 	cout << "Choose the function you want to use: ";
 	cin >> choice;
 	Action action;
@@ -104,6 +111,8 @@ void Admin::Searching(FileHandler & file){
 	{
 	default:
 		cout << "Wrong input, please try again!!";
+		system("pause");
+		system("cls");
 		AdminDecision(file);
 	case 1: {
 		UserSearchEqmAll(file);
@@ -129,6 +138,10 @@ void Admin::Searching(FileHandler & file){
 		UserSearchEqmStatus_Condition(file);
 		AdminDecision(file);
 	}
+	case 7: {
+		DeepSearching(file);
+		AdminDecision(file);
+	}
 	}
 
 }
@@ -137,15 +150,16 @@ void Admin::UpdateEquipmentByID(FileHandler & file){
 
 	bool check = false;
 	string id;
-	cout << "Enter the equipment ID" << endl;
+	cout << "Enter the equipment ID: ";
 	cin >> id;
 	if (id.substr(0, 1) == "T") {
 		Tent* TeCurr = file.TeHead;
 		for (; TeCurr != NULL; TeCurr = TeCurr->TeNext) {
-			if (id == TeCurr->Tcondition) {
+			if (id == TeCurr->TitemCode) {
 				string condition;
-				cout << "Input the new condition" << endl;
-				cin >> condition;
+				cin.ignore();
+				cout << "Input the new condition: ";
+				getline(cin, condition);
 				TeCurr->Tcondition = condition;
 				check = true;
 				break;
@@ -162,8 +176,9 @@ void Admin::UpdateEquipmentByID(FileHandler & file){
 		for (; SeCurr != NULL; SeCurr = SeCurr->StNext) {
 			if (id == SeCurr->SitemCode) {
 				string condition;
-				cout << "Input the new condition" << endl;
-				cin >> condition;
+				cin.ignore();
+				cout << "Input the new condition: ";
+				getline(cin, condition);
 				SeCurr->Scondition = condition;
 				check = true;
 				break;
@@ -178,10 +193,11 @@ void Admin::UpdateEquipmentByID(FileHandler & file){
 	else if (id.substr(0, 1) == "L") {
 		Lantern* LaCurr = file.LaHead;
 		for (; LaCurr != NULL; LaCurr = LaCurr->LaNext) {
-			if (id == LaCurr->Lcondition) {
+			if (id == LaCurr->LitemCode) {
 				string condition;
-				cout << "Input the new condition" << endl;
-				cin >> condition;
+				cin.ignore();
+				cout << "Input the new condition: ";
+				getline(cin, condition);
 				LaCurr->Lcondition = condition;
 				check = true;
 				break;
@@ -205,8 +221,40 @@ void Admin::UpdateEquipmentByID(FileHandler & file){
 		system("cls");
 		AdminDecision(file);
 	}
-	LoanControl loan;
 	loan.WriteEqmfile(file);
+}
+
+void Admin::ProduceFileDecision(FileHandler & file){
+
+	int choice;
+	cout << "1.Produce all file  2.Produce User file  3.Produce Equipment file  4.Produce Loan file" << endl;
+	cout << "Enter your choice: ";
+	cin >> choice;
+	switch (choice)
+	{
+	default:
+		cout << "Wrong input, please try again" << endl;
+		system("pause");
+		system("cls");
+		AdminDecision(file);
+	case 1: {
+		ProduceTextfile(file);
+		AdminDecision(file);
+	}
+	case 2: {
+		ProduceUserfile(file);
+		AdminDecision(file);
+	}
+	case 3: {
+		ProduceEqmfile(file);
+		AdminDecision(file);
+	}
+	case 4: {
+		ProduceLoanfile(file);
+		AdminDecision(file);
+	}
+	}
+
 
 }
 
@@ -267,23 +315,195 @@ void Admin::ProduceTextfile(FileHandler & file){
 		for (; LoCurr != NULL; LoCurr = LoCurr->LNext) {
 			NewFile << LoCurr->userid + "|" + LoCurr->username + "|" + LoCurr->itemCode + "|" + LoCurr->itemName + "|" + LoCurr->itemType + "|" + LoCurr->Bdate + "|" + LoCurr->Rdate + "|" + LoCurr->status + "\n";
 		}
+		cout << filename << " has been produced." << endl;
 	}
-
 	NewFile.close();
+	system("pause");
+	system("cls");
 
 }
 
-void Admin::InsertUserFile(FileHandler & file)
-{
+void Admin::ProduceUserfile(FileHandler & file){
+
+	VEN* VENcurr = file.VHead;
+	ROV* ROVcurr = file.RHead;
+	SCT* SCTcurr = file.THead;
+	SCM* SCMcurr = file.MHead;
+
+	string filename;
+	cout << "Enter the file name you want to produce: ";
+	cin >> filename;
+	ofstream NewFile;
+	NewFile.open(filename);
+	if (!(NewFile.is_open())) {
+		cerr << "Error. The file doesn't open correctly." << endl;
+	}
+	else {
+		for (; VENcurr != NULL; VENcurr = VENcurr->VNext) {
+			NewFile << VENcurr->VuserID << "|" << VENcurr->Vname << "|" << VENcurr->Vsection << "|" << VENcurr->Vpassword << "|" << VENcurr->Vaddress << endl;
+		}
+
+		for (; ROVcurr != NULL; ROVcurr = ROVcurr->RNext) {
+			NewFile << ROVcurr->RuserID << "|" << ROVcurr->Rname << "|" << ROVcurr->Rsection << "|" << ROVcurr->Rpassword << "|" << ROVcurr->Raddress << endl;
+		}
+
+		for (; SCTcurr != NULL; SCTcurr = SCTcurr->TNext) {
+			NewFile << SCTcurr->TuserID << "|" << SCTcurr->Tname << "|" << SCTcurr->Tsection << "|" << SCTcurr->Tpassword << "|" << SCTcurr->Taddress << "|" << SCTcurr->Trank << endl;
+		}
+
+		for (; SCMcurr != NULL; SCMcurr = SCMcurr->MNext) {
+			NewFile << SCMcurr->MuserID << "|" << SCMcurr->Mname << "|" << SCMcurr->Msection << "|" << SCMcurr->Mpassword << "|" << SCMcurr->Maddress << "|" << SCMcurr->Mrank << endl;
+		}
+		cout << filename << " has been produced." << endl;
+	}
+	NewFile.close();
+	system("pause");
+	system("cls");
+
 }
 
-void Admin::InsertEqmFile(FileHandler & file)
-{
+void Admin::ProduceEqmfile(FileHandler & file){
+
+	Tent* TeCurr = file.TeHead;
+	Stove* StCurr = file.StHead;
+	Lantern* LaCurr = file.LaHead;
+
+	string filename;
+	cout << "Enter the file name you want to produce: ";
+	cin >> filename;
+	ofstream NewFile;
+	NewFile.open(filename);
+	if (!(NewFile.is_open())) {
+		cerr << "Error. The file doesn't open correctly." << endl;
+	}
+	else {
+
+		for (; TeCurr != NULL; TeCurr = TeCurr->TeNext) {
+			NewFile << TeCurr->TitemCode + "|" + TeCurr->TitemName + "|" + TeCurr->Tbrand + "|" + TeCurr->Ttype + "|" + TeCurr->Tdate + "|" + TeCurr->Tcondition + "|"
+				+ TeCurr->Tstatus + "|" + TeCurr->Tppl + "|" + TeCurr->tType + "|" + TeCurr->Tdoor + "|" + TeCurr->TDlayer + "|" + TeCurr->Tcolour + "\n";
+		}
+
+		for (; StCurr != NULL; StCurr = StCurr->StNext) {
+			NewFile << StCurr->SitemCode + "|" + StCurr->SitemName + "|" + StCurr->Sbrand + "|" + StCurr->Stype + "|" + StCurr->Sdate + "|" + StCurr->Scondition + "|"
+				+ StCurr->Sstatus + "|" + StCurr->Sstype + "|" + StCurr->Sftype + "\n";
+		}
+
+		for (; LaCurr != NULL; LaCurr = LaCurr->LaNext) {
+			NewFile << LaCurr->LitemCode + "|" + LaCurr->LitemName + "|" + LaCurr->Lbrand + "|" + LaCurr->Ltype + "|" + LaCurr->Ldate + "|" + LaCurr->Lcondition + "|"
+				+ LaCurr->Lstatus + "|" + LaCurr->LactType + "|" + LaCurr->Lltype + "|" + LaCurr->Lftype + "\n";
+		}
+		cout << filename << " has been produced." << endl;
+	}
+	NewFile.close();
+	system("pause");
+	system("cls");
 }
 
-void Admin::InsertLoanFile(FileHandler & file)
-{
+void Admin::ProduceLoanfile(FileHandler & file){
+
+	Loan* LoCurr = file.LHead;
+
+	string filename;
+	cout << "Enter the file name you want to produce: ";
+	cin >> filename;
+	ofstream NewFile;
+	NewFile.open(filename);
+	if (!(NewFile.is_open())) {
+		cerr << "Error. The file doesn't open correctly." << endl;
+	}
+	else {
+
+		for (; LoCurr != NULL; LoCurr = LoCurr->LNext) {
+			NewFile << LoCurr->userid + "|" + LoCurr->username + "|" + LoCurr->itemCode + "|" + LoCurr->itemName + "|" + LoCurr->itemType + "|" + LoCurr->Bdate + "|" + LoCurr->Rdate + "|" + LoCurr->status + "\n";
+		}
+		cout << filename << " has been produced." << endl;
+	}
+	NewFile.close();
+	system("pause");
+	system("cls");
 }
+
+
+
+void Admin::Insert(FileHandler & file){
+	int choice;
+	cout << "1.Insert Userfile  2.Insert Equipment file  3.Insert Loan file" << endl;
+	cout << "Enter your choice: ";
+	cin >> choice;
+	switch (choice)
+	{
+	default:
+		cout << "Wrong input, please try again." << endl;
+		system("pause");
+		system("cls");
+		AdminDecision(file);
+	case 1: {
+		FileList list;
+		string filename = list.UserFileStore();
+		if (filename == "") {
+			AdminDecision(file);
+		}
+		else {
+			file.Userfileinput(filename);
+			loan.WriteUserfile(file);
+			cout << "Data has been inserted" << endl;
+			system("pause");
+			system("cls");
+			AdminDecision(file);
+		}
+	}
+	case 2: {
+		FileList list;
+		string filename = list.EqmFileStore();
+		if (filename == "") {
+			AdminDecision(file);
+		}
+		else {
+			file.Eqmfileinput(filename);
+			loan.WriteEqmfile(file);
+			cout << "Data has been inserted" << endl;
+			system("pause");
+			system("cls");
+			AdminDecision(file);
+		}
+	}
+	case 3: {
+		FileList list;
+		string filename = list.LoanFileStore();
+		if (filename == "") {
+			AdminDecision(file);
+		}
+		else {
+			file.Loanfileinput(filename);
+			loan.WriteLoanfile(file);
+			cout << "Data has been inserted" << endl;
+			system("pause");
+			system("cls");
+			AdminDecision(file);
+		}
+	}
+	}
+}
+
+void Admin::Deletefile(){
+	string filename;
+	ifstream dataSet;
+	cout << "Input the file name that you want to delete: ";
+	cin >> filename;
+	dataSet.open(filename);
+	if (!(dataSet.is_open())) {
+		cerr << "Error. The file doesn't open correctly." << endl;
+	}
+	else {
+		dataSet.close();
+		remove(filename.c_str());
+		cout << "file has been deleted." << endl;
+		system("pause");
+		system("cls");
+	}
+}
+
+
 
 
 

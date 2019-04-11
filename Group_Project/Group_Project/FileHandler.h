@@ -34,8 +34,11 @@ public:
 	void LoanfileinputAuto();
 
 
-	void Userfileinput(FileHandler& file, string filename);
+
+
+	void Userfileinput(string filename);
 	void Eqmfileinput(string filename);
+	void Loanfileinput(string filename);
 
 	void displayAll();
 	void displayUserfile();

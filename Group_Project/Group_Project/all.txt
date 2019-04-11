@@ -1,5 +1,5 @@
 VEN001|CHAN Yik Ming|Venture Scout|13041990|2A Oscar Bldg, NP, HK
-VEN002|Judy Fung|Venture Scout|11111111|31C Block 14 Orchard Court
+VEN002|Judy Fung|Venture Scout|24121991|31C Block 14 Orchard Court
 ROV001|Amy CHu|Rover Scout|11031988|14G Block 1 Harmony Garden
 ROV002|Yammy Tai|Rover Scout|14011997|16B Block 31 Jade Garden
 SCT001|Michael Tam|Scout|16051996|9B Odeon House, Causeway Bay|Member
@@ -16,10 +16,10 @@ T005|4 Persons Dome|Jackal|tent|25092012|good|in|2|dome|1|true|yellow
 T006|4 Persons Dome|Jackal|tent|25092012|good|in|4|dome|1|true|yellow
 T007|4 Persons Dome|Jackal|tent|25092012|disposed|in|4|dome|2|true|yellow
 T008|Ultralight Pack|Jackal|tent|14072014|good|in|2|lightweight|1|true|grey
-T009|Ultralight Pack|LUXE|tent|14072014|good|out|4|lightweight|1|true|red
-T010|Tunnel Tent|Camp Mark|tent|14072014|good|out|6|lightweight|1|true|grey
+T009|Ultralight Pack|LUXE|tent|14072014|good|in|4|lightweight|1|true|red
+T010|Tunnel Tent|Camp Mark|tent|14072014|good|in|6|lightweight|1|true|grey
 S001|Camp Stove|MSR|stove|04042015|good|in|lightweight|stove gas
-S002|Camp Stove|MSR|stove|04042015|good|out|lightweight|stove gas
+S002|Camp Stove|MSR|stove|04042015|good|in|lightweight|stove gas
 S003|Camp Stove|MSR|stove|04042015|good|in|lightweight|gasoline
 S004|Camp Stove|MSR|stove|04042015|good|in|lightweight|gasoline
 S005|Handy Stove|SeaToSubmit|stove|02042016|being repaired|out|ultralight|screw headed gas
@@ -30,18 +30,6 @@ L001|Head Gear Lamp|Black Diamond|lantern|24122018|good|in|hiking|head lamp|AAA 
 L002|Head Gear Lamp|Black Diamond|lantern|24122018|good|out|hiking|head lamp|AAA batteries
 L003|Moji Lantern|Black Diamond|lantern|06062017|good|out|camping|led lamp|AA batteries
 L004|Moji Lantern|Black Diamond|lantern|06062017|good|out|camping|led lamp|AA batteries
-L005|Cardinol Navigator|Black Diamond|lantern|06062017|good|out|camping|beam lamp|C batteries
-L006|Tall Beam Lamp|XXX|lantern|04062016|good|out|camping|beam lamp|D batteries
-VEN001|CHAN Yik Ming|L006|Tall Beam Lamp|lantern|10/4/2019|24/4/2019|YES
-VEN001|CHAN Yik Ming|T002|25th Jam Tent|tent|10/4/2019|24/4/2019|YES
-VEN001|CHAN Yik Ming|S004|Camp Stove|stove|10/4/2019|24/4/2019|YES
-ROV001|Amy CHu|L006|Tall Beam Lamp|lantern|10/4/2019|24/4/2019|NO
-ROV001|Amy CHu|T010|Tunnel Tent|tent|10/4/2019|24/4/2019|NO
-SCT002|Timothy Wong|L002|Head Gear Lamp|lantern|10/4/2019|24/4/2019|YES
-SCT003|Sophia Lam|L002|Head Gear Lamp|lantern|10/4/2019|24/4/2019|NO
-SCM003|Timmy Cheung|L005|Cardinol Navigator|lantern|10/4/2019|24/4/2019|NO
-VEN001|CHAN Yik Ming|S002|Camp Stove|stove|10/4/2019|24/4/2019|NO
-SCT001|Michael Tam|T009|Ultralight Pack|tent|10/4/2019|24/4/2019|NO
-VEN002|Judy Fung|T008|Ultralight Pack|tent|10/4/2019|24/4/2019|YES
-VEN002|Judy Fung|S004|Camp Stove|stove|10/4/2019|24/4/2019|YES
-VEN002|Judy Fung|L001|Head Gear Lamp|lantern|10/4/2019|24/4/2019|YES
+L005|Cardinol Navigator|Black Diamond|lantern|06062017|good|in|camping|beam lamp|C batteries
+L006|Tall Beam Lamp|XXX|lantern|04062016|good|in|camping|beam lamp|D batteries
+VEN001|CHAN Yik Ming|L002|Head Gear Lamp|lantern|12/4/2019|26/4/2019|NO

@@ -6,6 +6,7 @@
 #include "FileHandler.h"
 #include "UserAction.h"
 #include "LoanControl.h"
+#include "FileList.h"
 using namespace std;
 
 class Admin : public Action
@@ -23,10 +24,15 @@ public:
 	void AdminDisplay(FileHandler& file);
 	void Searching(FileHandler& file);
 	void UpdateEquipmentByID(FileHandler& file);
+	void ProduceFileDecision(FileHandler& file);
 	void ProduceTextfile(FileHandler& file);
-	void InsertUserFile(FileHandler& file);
-	void InsertEqmFile(FileHandler& file);
-	void InsertLoanFile(FileHandler& file);
+	void ProduceUserfile(FileHandler& file);
+	void ProduceEqmfile(FileHandler& file);
+	void ProduceLoanfile(FileHandler& file);
+	void Insert(FileHandler& file);
+	void Deletefile();
+	
+
 
 
 	

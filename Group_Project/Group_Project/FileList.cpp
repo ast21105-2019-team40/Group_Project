@@ -76,12 +76,82 @@ void FileList::UserFileWriteAuto(){
 	rename("Newfile.txt", "user.txt");
 }
 
-void FileList::UserFileStore()
-{
+string FileList::UserFileStore(){
+
+	string filename;
+	bool check;
+	string Fileline;
+	ifstream dataSet;
+	Ucounter = 0;
+
+	UHead = NULL;
+	File* UCurr = UHead;
+
+	cout << "Input the file name: ";
+	cin >> filename;
+	dataSet.open(filename);
+	if (!(dataSet.is_open())) {
+		cerr << "Error. The file doesn't open correctly." << endl;
+		check = false;
+		system("pause");
+		system("cls");
+	}
+	else {
+		check = true;
+		do {
+			while (getline(dataSet, Fileline)) {
+				if (Fileline == "") {
+					continue;
+				}
+				else {
+					if (UCurr == NULL) {
+						File* List = new File(Fileline);
+						UCurr = List;
+						UHead = UCurr;
+						Ucounter++;
+					}
+					else {
+						File* List = new File(Fileline);
+						UCurr->UNext = List;
+						UCurr = UCurr->UNext;
+						Ucounter++;
+					}
+				}
+			}
+		} while (!dataSet.eof());
+		dataSet.close();
+		remove(filename.c_str());
+		UserFileWrite(filename);
+	}
+	if (check == true) {
+		return filename;
+	}else {
+		filename = "";
+		return filename;
+	}
 }
 
-void FileList::UserFileWrite()
-{
+void FileList::UserFileWrite(string filename){
+	
+	int counter = 0;
+	File* UCurr = UHead;
+	ofstream NewFile;
+	NewFile.open("Newfile.txt");
+	if (!(NewFile.is_open())) {
+		cerr << "Error. The file doesn't open correctly." << endl;
+	}
+	else {
+		for (; UCurr != NULL; UCurr = UCurr->UNext) {
+			NewFile << UCurr->line + "\n";
+			counter++;
+			if (counter == Ucounter) {
+				break;
+			}
+		}
+	}
+	NewFile.close();
+	rename("Newfile.txt", filename.c_str());
+
 }
 
 
@@ -149,8 +219,84 @@ void FileList::EqmFileWriteAuto(){
 
 }
 
-void FileList::EqmFileStore()
-{
+string FileList::EqmFileStore(){
+
+	string filename;
+	bool check;
+	string Fileline;
+	ifstream dataSet;
+	Ecounter = 0;
+
+	EHead = NULL;
+	File* ECurr = EHead;
+	cout << "Input the file name: ";
+	cin >> filename;
+	dataSet.open(filename);
+	if (!(dataSet.is_open())) {
+		cerr << "Error. The file doesn't open correctly." << endl;
+		check = false;
+		system("pause");
+		system("cls");
+	}
+	else {
+		check = true;
+		do {
+			while (getline(dataSet, Fileline)) {
+				if (Fileline == "") {
+					continue;
+				}
+				else {
+					if (ECurr == NULL) {
+						File* List = new File(Fileline);
+						ECurr = List;
+						EHead = ECurr;
+						Ecounter++;
+					}
+					else {
+						File* List = new File(Fileline);
+						ECurr->ENext = List;
+						ECurr = ECurr->ENext;
+						Ecounter++;
+					}
+				}
+			}
+		} while (!dataSet.eof());
+		dataSet.close();
+		remove(filename.c_str());
+		EqmFileWrite(filename);
+
+	}
+	if (check == true) {
+		return filename;
+	}
+	else {
+		filename = "";
+		return filename;
+	}
+
+}
+
+void FileList::EqmFileWrite(string filename){
+	
+	int counter = 0;
+	File* ECurr = EHead;
+	ofstream NewFile;
+	NewFile.open("Newfile.txt");
+	if (!(NewFile.is_open())) {
+		cerr << "Error. The file doesn't open correctly." << endl;
+	}
+	else {
+		for (; ECurr != NULL; ECurr = ECurr->ENext) {
+			NewFile << ECurr->line + "\n";
+			counter++;
+			if (counter == Ecounter) {
+				break;
+			}
+		}
+	}
+	NewFile.close();
+	rename("Newfile.txt", filename.c_str());
+
 }
 
 void FileList::LoanFileStoreAuto(){
@@ -215,6 +361,83 @@ void FileList::LoanFileWriteAuto(){
 	NewFile.close();
 	rename("Newfile.txt", "loan.txt");
 
+}
+
+string FileList::LoanFileStore(){
+
+	string filename;
+	bool check;
+	string Fileline;
+	ifstream dataSet;
+	Lcounter = 0;
+
+	LHead = NULL;
+	File* LCurr = LHead;
+
+	cout << "Input the file name: ";
+	cin >> filename;
+	dataSet.open(filename);
+	if (!(dataSet.is_open())) {
+		cerr << "Error. The file doesn't open correctly." << endl;
+		check = false;
+		system("pause");
+		system("cls");
+	}
+	else {
+		check = true;
+		do {
+			while (getline(dataSet, Fileline)) {
+				if (Fileline == "") {
+					continue;
+				}
+				else {
+					if (LCurr == NULL) {
+						File* List = new File(Fileline);
+						LCurr = List;
+						LHead = LCurr;
+						Lcounter++;
+					}
+					else {
+						File* List = new File(Fileline);
+						LCurr->LNext = List;
+						LCurr = LCurr->LNext;
+						Lcounter++;
+					}
+				}
+			}
+		} while (!dataSet.eof());
+		dataSet.close();
+		remove(filename.c_str());
+		LoanFileWrite(filename);
+	}
+	if (check == true) {
+		return filename;
+	}
+	else {
+		filename = "";
+		return filename;
+	}
+}
+
+void FileList::LoanFileWrite(string filename){
+	int counter = 0;
+	File* LCurr = LHead;
+	ofstream NewFile;
+	NewFile.open("Newfile.txt");
+	if (!(NewFile.is_open())) {
+		cerr << "Error. The file doesn't open correctly." << endl;
+	}
+	else {
+		for (; LCurr != NULL; LCurr = LCurr->LNext) {
+			NewFile << LCurr->line + "\n";
+			counter++;
+			if (counter == Lcounter) {
+				break;
+			}
+		}
+	}
+	NewFile.close();
+	rename("Newfile.txt", filename.c_str());
 }
 
 

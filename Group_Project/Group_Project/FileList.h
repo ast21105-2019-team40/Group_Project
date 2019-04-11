@@ -19,18 +19,18 @@ public:
 	~FileList();
 	void UserFileStoreAuto();
 	void UserFileWriteAuto();
-	void UserFileStore();
-	void UserFileWrite();
+	string UserFileStore();
+	void UserFileWrite(string filename);
 
 	void EqmFileStoreAuto();
 	void EqmFileWriteAuto();
-	void EqmFileStore();
-	void EqmFileWrite();
+	string EqmFileStore();
+	void EqmFileWrite(string filename);
 
 	void LoanFileStoreAuto();
 	void LoanFileWriteAuto();
-	void LoanFileStore();
-	void LoadFileWrite();
+	string LoanFileStore();
+	void LoanFileWrite(string filename);
 
 
 
