@@ -90,6 +90,8 @@ void Admin::AdminDisplay(FileHandler & file) {
 	}
 }
 
+
+
 void Admin::Searching(FileHandler & file){
 
 	int choice;
