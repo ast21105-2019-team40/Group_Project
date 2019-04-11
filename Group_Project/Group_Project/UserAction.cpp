@@ -205,7 +205,7 @@ void Action::UserActionDecision(FileHandler & file) {
 
 	int choice;
 	cout << "Wellcome " << name << endl;
-	cout << "There are the functions: 1.Search Equment  2.Borrow Equipment  3.Search Loan Record  4.Return Equipment  5.Change Password  6.Deep Searching  0.End" << endl;
+	cout << "There are the functions: 1.Search Equipment  2.Borrow Equipment  3.Search Loan Record  4.Return Equipment  5.Change Password  6.Deep Searching  0.End" << endl;
 	cout << "Choose the function you want to use: ";
 	cin >> choice;
 	switch (choice) {
@@ -570,7 +570,7 @@ void Action::UserBorrow(FileHandler & file) {
 
 	if (credit > 0) {
 		cout << "Your credits: " << credit << endl;
-		cout << "Enter the equipment ID that you want to borrew: ";
+		cout << "Enter the equipment ID that you want to borrow: ";
 		cin >> itemCode;
 		if (itemCode.substr(0, 1) == "T") {
 			Tent* TeCurr = file.TeHead;
