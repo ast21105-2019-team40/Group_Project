@@ -1,1 +1,1 @@
-VEN001|CHAN Yik Ming|L002|Head Gear Lamp|lantern|12/4/2019|26/4/2019|NO
+VEN001|CHAN Yik Ming|S008|Alchohol Stove|stove|12/4/2019|26/4/2019|YES

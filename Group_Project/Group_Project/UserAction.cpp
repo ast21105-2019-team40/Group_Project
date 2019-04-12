@@ -528,7 +528,7 @@ void Action::UserSearchLoanRecord(FileHandler & file) {
 	for (; LoCurr != NULL; LoCurr = LoCurr->LNext) {
 		if (account == LoCurr->userid) {
 			check = true;
-			cout <<"userid: " <<LoCurr->userid << " | " << LoCurr->username << " | " << LoCurr->itemCode << " | " << LoCurr->itemName << " | " << LoCurr->itemType << " | " << LoCurr->Bdate << " | "
+			cout <<LoCurr->userid << " | " << LoCurr->username << " | " << LoCurr->itemCode << " | " << LoCurr->itemName << " | " << LoCurr->itemType << " | " << LoCurr->Bdate << " | "
 				<< LoCurr->Rdate << " | " << LoCurr->status << endl;
 		}
 	}
