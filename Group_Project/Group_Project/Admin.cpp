@@ -11,6 +11,7 @@ string Admin::Agetter(){
 }
 
 
+
 string Admin::Pgetter(){
 	return password;
 }
