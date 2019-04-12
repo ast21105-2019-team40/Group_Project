@@ -39,6 +39,7 @@ public:
 	void DeepSearching(FileHandler& file);
 
 	void UserSearchLoanRecord(FileHandler& file);
+	void UserSearchPreLoanRecord(FileHandler& file);
 	void UserBorrow(FileHandler& file);
 	void UserReturn(FileHandler& file);
 

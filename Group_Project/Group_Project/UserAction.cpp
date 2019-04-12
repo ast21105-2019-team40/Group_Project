@@ -205,7 +205,7 @@ void Action::UserActionDecision(FileHandler & file) {
 
 	int choice;
 	cout << "Wellcome " << name << endl;
-	cout << "There are the functions: 1.Search Equipment  2.Borrow Equipment  3.Search Loan Record  4.Return Equipment  5.Change Password  6.Deep Searching  0.End" << endl;
+	cout << "There are the functions: 1.Search Equipment  2.Borrow Equipment  3.Check Loan Record  4.Check Previous Loan Record  5.Return Equipment  6.Change Password  7.Deep Searching  0.End" << endl;
 	cout << "Choose the function you want to use: ";
 	cin >> choice;
 	switch (choice) {
@@ -230,12 +230,16 @@ void Action::UserActionDecision(FileHandler & file) {
 		UserActionDecision(file);
 	}
 	case 4: {
-		UserReturn(file);
+		UserSearchPreLoanRecord(file);
+		UserActionDecision(file);
 	}
 	case 5: {
-		UserChangePassword(account, file);
+		UserReturn(file);
 	}
 	case 6: {
+		UserChangePassword(account, file);
+	}
+	case 7: {
 		DeepSearching(file);
 	}
 	}
@@ -526,7 +530,7 @@ void Action::UserSearchLoanRecord(FileHandler & file) {
 
 	Loan* LoCurr = file.LHead;
 	for (; LoCurr != NULL; LoCurr = LoCurr->LNext) {
-		if (account == LoCurr->userid) {
+		if (account == LoCurr->userid  && LoCurr->status == "NO") {
 			check = true;
 			cout <<LoCurr->userid << " | " << LoCurr->username << " | " << LoCurr->itemCode << " | " << LoCurr->itemName << " | " << LoCurr->itemType << " | " << LoCurr->Bdate << " | "
 				<< LoCurr->Rdate << " | " << LoCurr->status << endl;
@@ -537,6 +541,26 @@ void Action::UserSearchLoanRecord(FileHandler & file) {
 	}
 	system("pause");
 	system("cls");
+}
+
+void Action::UserSearchPreLoanRecord(FileHandler & file){
+
+	bool check = false;
+
+	Loan* LoCurr = file.LHead;
+	for (; LoCurr != NULL; LoCurr = LoCurr->LNext) {
+		if (account == LoCurr->userid  && LoCurr->status == "YES") {
+			check = true;
+			cout << LoCurr->userid << " | " << LoCurr->username << " | " << LoCurr->itemCode << " | " << LoCurr->itemName << " | " << LoCurr->itemType << " | " << LoCurr->Bdate << " | "
+				<< LoCurr->Rdate << " | " << LoCurr->status << endl;
+		}
+	}
+	if (check == false) {
+		cout << "No Record find." << endl;
+	}
+	system("pause");
+	system("cls");
+
 }
 
 void Action::UserBorrow(FileHandler & file) {
