@@ -9,7 +9,7 @@
 #include "FileList.h"
 using namespace std;
 
-class Admin : public Action
+class Admin : public Action, public LoanControl
 {
 private:
 	string account;
@@ -31,6 +31,10 @@ public:
 	void ProduceLoanfile(FileHandler& file);
 	void Insert(FileHandler& file);
 	void Deletefile();
+	void DeleteDecison(FileHandler& file);
+	void DeleteUserDataID(FileHandler& file);
+	void DeleteEqmDataID(FileHandler& file);
+	void DeleteLoanData(FileHandler& file);
 	
 
 

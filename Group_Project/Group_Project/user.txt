@@ -6,5 +6,3 @@ SCT001|Michael Tam|Scout|16051996|9B Odeon House, Causeway Bay|Member
 SCT002|Timothy Wong|Scout|01041995|House 44, Lot 51, Pak Heung|Patrol Leader
 SCT003|Sophia Lam|Scout|02021996|12E Block 12 Rose Court|Assistant Patrol Leader
 SCM001|Daniel Lee|Scouter|01121985|5A Block 11, Jimmy's Court, Ma On Shan|Scout Leader
-SCM002|Alex Wong|Scouter|02111987|41F Block 2, Sunrise House, Tai Po|Assistant Scout Leader
-SCM003|Timmy Cheung|Scouter|16031989|Lot 17A, Sin Mei Village, Sai Kung|Rover Scout Leader

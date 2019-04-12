@@ -29,7 +29,7 @@ bool Admin::AdminLogin(string _account, string _password, FileHandler & file) {
 void Admin::AdminDecision(FileHandler & file){
 	int choice;
 	cout << "Wellcome Admin" << endl;
-	cout << "There are the function: 1.Display  2.Searching  3.Produce a txt file  4.Insert File  5.Delete file  6.Update Equipment file  0.Exit" << endl;
+	cout << "There are the function: 1.Display  2.Searching  3.Produce a txt file  4.Insert File  5.Delete file  6.Update Equipment file  7.Delete Item  0.Exit" << endl;
 	cout << "Enter your choice: ";
 	cin >> choice;
 	switch (choice)
@@ -63,6 +63,10 @@ void Admin::AdminDecision(FileHandler & file){
 	}
 	case 6: {
 		UpdateEquipmentByID(file);
+		AdminDecision(file);
+	}
+	case 7: {
+		DeleteDecison(file);
 		AdminDecision(file);
 	}
 	}
@@ -222,7 +226,7 @@ void Admin::UpdateEquipmentByID(FileHandler & file){
 		system("cls");
 		AdminDecision(file);
 	}
-	loan.WriteEqmfile(file);
+	WriteEqmfile(file);
 }
 
 void Admin::ProduceFileDecision(FileHandler & file){
@@ -503,6 +507,242 @@ void Admin::Deletefile(){
 		system("cls");
 	}
 }
+
+void Admin::DeleteDecison(FileHandler & file){
+	int choice;
+	cout << "1.Delete user data  2.Delete equipment data" << endl;
+	cout << "Enter your choice: ";
+	cin >> choice;
+	switch (choice)	
+	{
+	default:
+		cout << "Wrong input, please try again" << endl;
+		system("pause");
+		system("cls");
+		AdminDecision(file);
+	case 1: {
+		DeleteUserDataID(file);
+		WriteUserfile(file);
+		AdminDecision(file);
+	}
+	case 2: {
+		DeleteEqmDataID(file);
+		WriteEqmfile(file);
+		AdminDecision(file);
+	}
+	}
+
+
+}
+
+void Admin::DeleteUserDataID(FileHandler & file){
+
+	bool check = false;
+	string id;
+	cout << "Enter the user ID that you want to delete: ";
+	cin >> id;
+	if (id.substr(0, 3) == "VEN") {
+		VEN* VENCurr = file.VHead;
+		VEN* PreN = NULL;
+		for (; VENCurr != NULL; PreN = VENCurr, VENCurr = VENCurr->VNext) {
+			if (PreN == NULL && VENCurr->VuserID == id) {
+				cout << VENCurr->VuserID << " | " << VENCurr->Vname << " | " << VENCurr->Vsection << " | " << VENCurr->Vpassword << " | " << VENCurr->Vaddress << endl;
+				file.VHead = VENCurr->VNext;
+				cout << "Data " << id << " has been deleted." << endl;
+				check = true;
+				system("pause");
+				system("cls");
+				break;
+			}
+			else if (PreN != NULL && VENCurr->VuserID == id) {
+				cout << VENCurr->VuserID << " | " << VENCurr->Vname << " | " << VENCurr->Vsection << " | " << VENCurr->Vpassword << " | " << VENCurr->Vaddress << endl;
+				PreN->VNext = VENCurr->VNext;
+				delete VENCurr;
+				cout << "Data " << id << " has been deleted." << endl;
+				check = true;
+				system("pause");
+				system("cls");
+				break;
+			}
+		}
+	}
+	else if (id.substr(0, 3) == "ROV") {
+		ROV* ROVCurr = file.RHead;
+		ROV* PreN = NULL;
+		for (; ROVCurr != NULL; PreN = ROVCurr, ROVCurr = ROVCurr->RNext) {
+			if (PreN == NULL && ROVCurr->RuserID == id) {
+				cout << ROVCurr->RuserID << " | " << ROVCurr->Rname << " | " << ROVCurr->Rsection << " | " << ROVCurr->Rpassword << " | " << ROVCurr->Raddress << endl;
+				file.RHead = ROVCurr->RNext;
+				cout << "Data " << id << " has been deleted." << endl;
+				check = true;
+				system("pause");
+				system("cls");
+				break;
+			}
+			else if (PreN != NULL && ROVCurr->RuserID == id) {
+				cout << ROVCurr->RuserID << " | " << ROVCurr->Rname << " | " << ROVCurr->Rsection << " | " << ROVCurr->Rpassword << " | " << ROVCurr->Raddress << endl;
+				PreN->RNext = ROVCurr->RNext;
+				delete ROVCurr;
+				cout << "Data " << id << " has been deleted." << endl;
+				check = true;
+				system("pause");
+				system("cls");
+				break;
+			}
+		}
+	}
+	else if (id.substr(0, 3) == "SCT") {
+		SCT* SCTCurr = file.THead;
+		SCT* PreN = NULL;
+		for (; SCTCurr != NULL; PreN = SCTCurr, SCTCurr = SCTCurr->TNext) {
+			if (PreN == NULL && SCTCurr->TuserID == id) {
+				cout << SCTCurr->TuserID << " | " << SCTCurr->Tname << " | " << SCTCurr->Tsection << " | " << SCTCurr->Tpassword << " | " << SCTCurr->Taddress << " | " << SCTCurr->Trank << endl;
+				file.THead = SCTCurr->TNext;
+				cout << "Data " << id << " has been deleted." << endl;
+				check = true;
+				system("pause");
+				system("cls");
+				break;
+			}
+			else if (PreN != NULL && SCTCurr->TuserID == id) {
+				cout << SCTCurr->TuserID << " | " << SCTCurr->Tname << " | " << SCTCurr->Tsection << " | " << SCTCurr->Tpassword << " | " << SCTCurr->Taddress << " | " << SCTCurr->Trank << endl;
+				PreN->TNext = SCTCurr->TNext;
+				delete SCTCurr;
+				cout << "Data " << id << " has been deleted." << endl;
+				check = true;
+				system("pause");
+				system("cls");
+				break;
+			}
+		}
+	}
+	else if (id.substr(0, 3) == "SCM") {
+		SCM* SCMCurr = file.MHead;
+		SCM* PreN = NULL;
+		for (; SCMCurr != NULL; PreN = SCMCurr, SCMCurr = SCMCurr->MNext) {
+			if (PreN == NULL && SCMCurr->MuserID == id) {
+				cout << SCMCurr->MuserID << " | " << SCMCurr->Mname << " | " << SCMCurr->Msection << " | " << SCMCurr->Mpassword << " | " << SCMCurr->Maddress << " | " << SCMCurr->Mrank << endl;
+				file.MHead = SCMCurr->MNext;
+				cout << "Data " << id << " has been deleted." << endl;
+				check = true;
+				system("pause");
+				system("cls");
+				break;
+			}
+			else if (PreN != NULL && SCMCurr->MuserID == id) {
+				cout << SCMCurr->MuserID << " | " << SCMCurr->Mname << " | " << SCMCurr->Msection << " | " << SCMCurr->Mpassword << " | " << SCMCurr->Maddress << " | " << SCMCurr->Mrank << endl;
+				PreN->MNext = SCMCurr->MNext;
+				delete SCMCurr;
+				cout << "Data " << id << " has been deleted." << endl;
+				check = true;
+				system("pause");
+				system("cls");
+				break;
+			}
+		}
+	}
+	else if (check == false) {
+		cout << "No data found." << endl;
+		system("pause");
+		system("cls");
+	}
+}
+
+void Admin::DeleteEqmDataID(FileHandler & file){
+
+	bool check = false;
+	string id;
+	cout << "Enter the equipment ID that you want to delete: ";
+	cin >> id;
+	if (id.substr(0, 1) == "T") {
+		Tent* TeCurr = file.TeHead;
+		Tent* PreN = NULL;
+		for (; TeCurr != NULL; PreN = TeCurr, TeCurr = TeCurr->TeNext) {
+			if (PreN == NULL && TeCurr->TitemCode == id) {
+				cout << TeCurr->TitemCode << " | " << TeCurr->TitemName << " | " << TeCurr->Tbrand << " | " << TeCurr->Ttype << " | " << TeCurr->Tdate << " | " << TeCurr->Tcondition << " | "
+					<< TeCurr->Tstatus << " | " << TeCurr->Tppl << " | " << TeCurr->tType << " | " << TeCurr->Tdoor << " | " << TeCurr->TDlayer << " | " << TeCurr->Tcolour << endl;
+				file.TeHead = TeCurr->TeNext;
+				cout << "Data " << id << " has been deleted." << endl;
+				check = true;
+				system("pause");
+				system("cls");
+				break;
+			}
+			else if (PreN != NULL && TeCurr->TitemCode == id) {
+				cout << TeCurr->TitemCode << " | " << TeCurr->TitemName << " | " << TeCurr->Tbrand << " | " << TeCurr->Ttype << " | " << TeCurr->Tdate << " | " << TeCurr->Tcondition << " | "
+					<< TeCurr->Tstatus << " | " << TeCurr->Tppl << " | " << TeCurr->tType << " | " << TeCurr->Tdoor << " | " << TeCurr->TDlayer << " | " << TeCurr->Tcolour << endl;
+				PreN->TeNext = TeCurr->TeNext;
+				delete TeCurr;
+				cout << "Data " << id << " has been deleted." << endl;
+				check = true;
+				system("pause");
+				system("cls");
+				break;
+			}
+		}
+	}
+	else if (id.substr(0, 1) == "S") {
+		Stove* SeCurr = file.StHead;
+		Stove* PreN = NULL;
+		for (; SeCurr != NULL; PreN = SeCurr, SeCurr = SeCurr->StNext) {
+			if (PreN == NULL && SeCurr->SitemCode == id) {
+				cout << SeCurr->SitemCode << " | " << SeCurr->SitemName << " | " << SeCurr->Sbrand << " | " << SeCurr->Stype << " | " << SeCurr->Sdate << " | " << SeCurr->Scondition << " | "
+					<< SeCurr->Sstatus << " | " << SeCurr->Sstype << " | " << SeCurr->Sftype << endl;
+				file.StHead = SeCurr->StNext;
+				cout << "Data " << id << " has been deleted." << endl;
+				check = true;
+				system("pause");
+				system("cls");
+				break;
+			}
+			else if (PreN != NULL && SeCurr->SitemCode == id) {
+				cout << SeCurr->SitemCode << " | " << SeCurr->SitemName << " | " << SeCurr->Sbrand << " | " << SeCurr->Stype << " | " << SeCurr->Sdate << " | " << SeCurr->Scondition << " | "
+					<< SeCurr->Sstatus << " | " << SeCurr->Sstype << " | " << SeCurr->Sftype << endl;
+				PreN->StNext = SeCurr->StNext;
+				delete SeCurr;
+				cout << "Data " << id << " has been deleted." << endl;
+				check = true;
+				system("pause");
+				system("cls");
+				break;
+			}
+		}
+	}
+	else if (id.substr(0, 1) == "L") {
+		Lantern* LaCurr = file.LaHead;
+		Lantern* PreN = NULL;
+		for (; LaCurr != NULL; PreN = LaCurr, LaCurr = LaCurr->LaNext) {
+			if (PreN == NULL && LaCurr->LitemCode == id) {
+				cout << LaCurr->LitemCode << " | " << LaCurr->LitemName << " | " << LaCurr->Lbrand << " | " << LaCurr->Ltype << " | " << LaCurr->Ldate << " | " << LaCurr->Lcondition << " | "
+					<< LaCurr->Lstatus << " | " << LaCurr->LactType << " | " << LaCurr->Lltype << " | " << LaCurr->Lftype << endl;
+				file.LaHead = LaCurr->LaNext;
+				cout << "Data " << id << " has been deleted." << endl;
+				check = true;
+				system("pause");
+				system("cls");
+				break;
+			}
+			else if (PreN != NULL && LaCurr->LitemCode == id) {
+				cout << LaCurr->LitemCode << " | " << LaCurr->LitemName << " | " << LaCurr->Lbrand << " | " << LaCurr->Ltype << " | " << LaCurr->Ldate << " | " << LaCurr->Lcondition << " | "
+					<< LaCurr->Lstatus << " | " << LaCurr->LactType << " | " << LaCurr->Lltype << " | " << LaCurr->Lftype << endl;
+				PreN->LaNext = LaCurr->LaNext;
+				delete LaCurr;
+				cout << "Data " << id << " has been deleted." << endl;
+				check = true;
+				system("pause");
+				system("cls");
+				break;
+			}
+		}
+	}
+	else if (check == true) {
+		cout << "No data found" << endl;
+		system("pause");
+		system("cls");
+	}
+}
+
+
 
 
 
