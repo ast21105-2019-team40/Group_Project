@@ -30,7 +30,7 @@ public:
 	void UserSearchDecision(FileHandler& file);
 
 	void UserSearchEqmAll(FileHandler& file);
-	void UserSearchEqmStatus(FileHandler& file);
+	//void UserSearchEqmStatus(FileHandler& file);
 
 	void UserSearchEqmType(FileHandler& file);
 	void UserSearchEqmCondition(FileHandler& file);

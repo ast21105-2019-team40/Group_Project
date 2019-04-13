@@ -108,7 +108,7 @@ void Admin::Searching(FileHandler & file){
 
 	int choice;
 	cout << "1.Search All Equipment  2. Search All Avaliable Equipment  3.Search Equipment ID  4.Search Equipment Type  " << endl;
-	cout << "5.Search All Good Condition Equipment  6.Search All Avaliable Equipment with Good Condition  7.Deep Search" << endl;
+	cout << "5.Search All Good Condition Equipment  6.Deep Search" << endl;
 	cout << "Choose the function you want to use: ";
 	cin >> choice;
 	Action action;
@@ -124,7 +124,7 @@ void Admin::Searching(FileHandler & file){
 		AdminDecision(file);
 	}
 	case 2: {
-		UserSearchEqmStatus(file);
+		UserSearchEqmStatus_Condition(file);
 		AdminDecision(file);
 	}
 	case 3: {
@@ -140,10 +140,6 @@ void Admin::Searching(FileHandler & file){
 		AdminDecision(file);
 	}
 	case 6: {
-		UserSearchEqmStatus_Condition(file);
-		AdminDecision(file);
-	}
-	case 7: {
 		DeepSearching(file);
 		AdminDecision(file);
 	}

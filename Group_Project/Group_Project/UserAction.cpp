@@ -248,7 +248,7 @@ void Action::UserActionDecision(FileHandler & file) {
 void Action::UserSearchDecision(FileHandler & file) {
 	int choice;
 	cout << "1.Search All Equipment  2. Search All Avaliable Equipment  3.Search Equipment ID  4.Search Equipment Type  " << endl;
-	cout << "5.Search All Good Condition Equipment  6.Search All Avaliable Equipment with Good Condition" << endl;
+	cout << "5.Search All Good Condition Equipment " << endl;
 	cout << "Choose the function you want to use: ";
 	cin >> choice;
 	switch (choice) {
@@ -260,7 +260,7 @@ void Action::UserSearchDecision(FileHandler & file) {
 		UserActionDecision(file);
 	}
 	case 2: {
-		UserSearchEqmStatus(file);
+		UserSearchEqmStatus_Condition(file);
 		UserActionDecision(file);
 	}
 	case 3: {
@@ -278,11 +278,6 @@ void Action::UserSearchDecision(FileHandler & file) {
 		UserActionDecision(file);
 
 	}
-	case 6: {
-		UserSearchEqmStatus_Condition(file);
-		UserActionDecision(file);
-	}
-
 	}
 
 }
@@ -309,7 +304,7 @@ void Action::UserSearchEqmAll(FileHandler & file) {
 	system("cls");
 }
 
-void Action::UserSearchEqmStatus(FileHandler & file) {
+/*void Action::UserSearchEqmStatus(FileHandler & file) {
 
 	Tent* TeCurr = file.TeHead;
 	for (; TeCurr != NULL; TeCurr = TeCurr->TeNext) {
@@ -338,7 +333,7 @@ void Action::UserSearchEqmStatus(FileHandler & file) {
 	system("pause");
 	system("cls");
 
-}
+}*/
 
 void Action::UserSearchEqmType(FileHandler & file) {
 	string type;
