@@ -1,5 +1,5 @@
-T001|25th Jam Tent|Nikko|tent|02042014|good|out|4|dome|2|true|blue
-T002|25th Jam Tent|Nikko|tent|02042014|good|in|4|dome|2|true|blue
+T001|25th Jam Tent|Nikko|tent|02042014|good|in|4|dome|2|true|blue
+T002|25th Jam Tent|Nikko|tent|02042014|good|out|4|dome|2|true|blue
 T003|25th Jam Tent|Nikko|tent|02042014|good|out|4|dome|2|true|blue
 T004|Family Tent|LUXE|tent|12042008|damaged|in|4|wall|10|true|orange
 T005|4 Persons Dome|Jackal|tent|25092012|good|in|2|dome|1|true|yellow
@@ -16,8 +16,9 @@ S005|Handy Stove|SeaToSubmit|stove|02042016|being repaired|out|ultralight|screw 
 S006|Handy Stove|SeaToSubmit|stove|02042016|good|out|ultralight|screw headed gas
 S007|Alchohol Stove|Alocs|stove|01032017|good|out|ultralight|wax
 S008|Alchohol Stove|Alocs|stove|01032017|good|in|ultralight|wax
-L001|Head Gear Lamp|Black Diamond|lantern|24122018|good|in|hiking|head lamp|AAA batteries
+L001|Head Gear Lamp|Black Diamond|lantern|24122018|good|out|hiking|head lamp|AAA batteries
 L002|Head Gear Lamp|Black Diamond|lantern|24122018|good|in|hiking|head lamp|AAA batteries
 L003|Moji Lantern|Black Diamond|lantern|06062017|good|out|camping|led lamp|AA batteries
 L004|Moji Lantern|Black Diamond|lantern|06062017|good|out|camping|led lamp|AA batteries
-L005|Cardinol Navigator|Black Diamond|lantern|06062017|good|in|camping|beam lamp|C batteries
+L005|Cardinol Navigator|Black Diamond|lantern|06062017|good|out|camping|beam lamp|C batteries
+L006|Tall Beam Lamp|XXX|lantern|04062016|good|in|camping|beam lamp|D batteries

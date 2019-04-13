@@ -610,6 +610,8 @@ void Action::UserBorrow(FileHandler & file) {
 						Bdate = to_string(date) + "/" + to_string(month) + "/" + to_string(year);
 						Rdate = loan.ReturnDate(date, month, year);
 						status = "NO";
+						cout << TeCurr->TitemCode << " | " << TeCurr->TitemName << " | " << TeCurr->Tbrand << " | " << TeCurr->Ttype << " | " << TeCurr->Tdate << " | " << TeCurr->Tcondition << " | "
+							<< TeCurr->Tstatus << " | " << TeCurr->Tppl << " | " << TeCurr->tType << " | " << TeCurr->Tdoor << " | " << TeCurr->TDlayer << " | " << TeCurr->Tcolour << endl;
 						TeCurr->Tstatus = "out";
 						break;
 					}
@@ -636,6 +638,8 @@ void Action::UserBorrow(FileHandler & file) {
 						Bdate = to_string(date) + "/" + to_string(month) + "/" + to_string(year);
 						Rdate = loan.ReturnDate(date, month, year);
 						status = "NO";
+						cout << StCurr->SitemCode << " | " << StCurr->SitemName << " | " << StCurr->Sbrand << " | " << StCurr->Stype << " | " << StCurr->Sdate << " | " << StCurr->Scondition << " | "
+							<< StCurr->Sstatus << " | " << StCurr->Sstype << " | " << StCurr->Sftype << endl;
 						StCurr->Sstatus = "out";
 						break;
 					}
@@ -663,6 +667,8 @@ void Action::UserBorrow(FileHandler & file) {
 						Bdate = to_string(date) + "/" + to_string(month) + "/" + to_string(year);
 						Rdate = loan.ReturnDate(date, month, year);
 						status = "NO";
+						cout << LaCurr->LitemCode << " | " << LaCurr->LitemName << " | " << LaCurr->Lbrand << " | " << LaCurr->Ltype << " | " << LaCurr->Ldate << " | "
+							<< LaCurr->Lcondition << " | " << LaCurr->Lstatus << " | " << LaCurr->LactType << " | " << LaCurr->Lltype << " | " << LaCurr->Lftype << endl;
 						LaCurr->Lstatus = "out";
 						break;
 					}

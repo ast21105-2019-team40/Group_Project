@@ -34,7 +34,6 @@ public:
 	void DeleteDecison(FileHandler& file);
 	void DeleteUserDataID(FileHandler& file);
 	void DeleteEqmDataID(FileHandler& file);
-	void DeleteLoanData(FileHandler& file);
 	
 
 

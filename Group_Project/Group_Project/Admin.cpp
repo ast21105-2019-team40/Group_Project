@@ -735,7 +735,7 @@ void Admin::DeleteEqmDataID(FileHandler & file){
 			}
 		}
 	}
-	else if (check == true) {
+	else if (check == false) {
 		cout << "No data found" << endl;
 		system("pause");
 		system("cls");
