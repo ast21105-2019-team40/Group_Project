@@ -1,3 +1,4 @@
+#pragma warning(disable : 4996)
 #include "Admin.h"
 #include "UserAction.h"
 #include "UserNode.h"
