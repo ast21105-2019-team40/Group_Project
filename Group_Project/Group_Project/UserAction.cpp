@@ -381,7 +381,7 @@ void Action::UserSearchEqmCondition(FileHandler & file) {
 		}
 	}
 
-	Stove* SeCurr = file.StHead;
+	Stove* SeCurr = file.StHead;  //search stove
 	for (; SeCurr != NULL; SeCurr = SeCurr->StNext) {
 		if (SeCurr->Scondition == "good") {
 			cout << SeCurr->SitemCode << " | " << SeCurr->SitemName << " | " << SeCurr->Sbrand << " | " << SeCurr->Stype << " | " << SeCurr->Sdate << " | " << SeCurr->Scondition << " | "
@@ -389,7 +389,7 @@ void Action::UserSearchEqmCondition(FileHandler & file) {
 		}
 	}
 
-	Lantern* LaCurr = file.LaHead;
+	Lantern* LaCurr = file.LaHead; //search stove
 	for (; LaCurr != NULL; LaCurr = LaCurr->LaNext) {
 		if (LaCurr->Lcondition == "good") {
 			cout << LaCurr->LitemCode << " | " << LaCurr->LitemName << " | " << LaCurr->Lbrand << " | " << LaCurr->Ltype << " | " << LaCurr->Ldate << " | " << LaCurr->Lcondition << " | "
@@ -401,7 +401,7 @@ void Action::UserSearchEqmCondition(FileHandler & file) {
 	system("cls");
 }
 
-void Action::UserSearchEqmID(FileHandler & file) {
+void Action::UserSearchEqmID(FileHandler & file) {  //search by ID
 
 	string id;
 	bool check = false;
@@ -409,7 +409,7 @@ void Action::UserSearchEqmID(FileHandler & file) {
 	cin >> id;
 	if (id.substr(0, 1) == "T") {
 		Tent* TeCurr = file.TeHead;
-		for (; TeCurr != NULL; TeCurr = TeCurr->TeNext) {
+		for (; TeCurr != NULL; TeCurr = TeCurr->TeNext) {   //search base on the tent item code
 			if (TeCurr->TitemCode == id) {
 				cout << TeCurr->TitemCode << " | " << TeCurr->TitemName << " | " << TeCurr->Tbrand << " | " << TeCurr->Ttype << " | " << TeCurr->Tdate << " | " << TeCurr->Tcondition << " | "
 					<< TeCurr->Tstatus << " | " << TeCurr->Tppl << " | " << TeCurr->tType << " | " << TeCurr->Tdoor << " | " << TeCurr->TDlayer << " | " << TeCurr->Tcolour << endl;
@@ -425,7 +425,7 @@ void Action::UserSearchEqmID(FileHandler & file) {
 	}
 	else if (id.substr(0, 1) == "S") {
 		Stove* StCurr = file.StHead;
-		for (; StCurr != NULL; StCurr = StCurr->StNext) {
+		for (; StCurr != NULL; StCurr = StCurr->StNext) {   //search base on the stove item code
 			if (StCurr->SitemCode == id) {
 				cout << StCurr->SitemCode << " | " << StCurr->SitemName << " | " << StCurr->Sbrand << " | " << StCurr->Stype << " | " << StCurr->Sdate << " | " << StCurr->Scondition << " | "
 					<< StCurr->Sstatus << " | " << StCurr->Sstype << " | " << StCurr->Sftype << endl;
@@ -441,7 +441,7 @@ void Action::UserSearchEqmID(FileHandler & file) {
 	}
 	else if (id.substr(0, 1) == "L") {
 		Lantern* LaCurr = file.LaHead;
-		for (; LaCurr != NULL; LaCurr = LaCurr->LaNext) {
+		for (; LaCurr != NULL; LaCurr = LaCurr->LaNext) {   //search base on the lantern item code
 			if (LaCurr->LitemCode == id) {
 				cout << LaCurr->LitemCode << " | " << LaCurr->LitemName << " | " << LaCurr->Lbrand << " | " << LaCurr->Ltype << " | " << LaCurr->Ldate << " | "
 					<< LaCurr->Lcondition << " | " << LaCurr->Lstatus << " | " << LaCurr->LactType << " | " << LaCurr->Lltype << " | " << LaCurr->Lftype << endl;
@@ -449,7 +449,7 @@ void Action::UserSearchEqmID(FileHandler & file) {
 				break;
 			}
 		}
-		if (check == false) {
+		if (check == false) {								//wrong input or wrong item code will output a message to warn user and let user input again
 			cout << "No such equipment" << endl;
 		}
 		system("pause");
@@ -463,7 +463,7 @@ void Action::UserSearchEqmID(FileHandler & file) {
 	}
 }
 
-void Action::UserSearchEqmStatus_Condition(FileHandler & file) {
+void Action::UserSearchEqmStatus_Condition(FileHandler & file) {		//check the status of item (good, damaged)
 
 	Tent* TeCurr = file.TeHead;
 	for (; TeCurr != NULL; TeCurr = TeCurr->TeNext) {
@@ -494,7 +494,7 @@ void Action::UserSearchEqmStatus_Condition(FileHandler & file) {
 
 }
 
-void Action::DeepSearching(FileHandler & file){
+void Action::DeepSearching(FileHandler & file){			//check the item base on equipment type
 	string type;
 	cout << "input the equipment type: ";
 	cin >> type;
@@ -519,7 +519,7 @@ void Action::DeepSearching(FileHandler & file){
 
 }
 
-void Action::UserSearchLoanRecord(FileHandler & file) {
+void Action::UserSearchLoanRecord(FileHandler & file) {		//check loan history (only the borrowed and not reture book )
 
 	bool check = false;
 
@@ -538,7 +538,7 @@ void Action::UserSearchLoanRecord(FileHandler & file) {
 	system("cls");
 }
 
-void Action::UserSearchPreLoanRecord(FileHandler & file){
+void Action::UserSearchPreLoanRecord(FileHandler & file){		//check loan history (borrow and return  action will be marked)
 
 	bool check = false;
 
@@ -558,7 +558,7 @@ void Action::UserSearchPreLoanRecord(FileHandler & file){
 
 }
 
-void Action::UserBorrow(FileHandler & file) {
+void Action::UserBorrow(FileHandler & file) {		//a borrow function which show the credit of borrow book and the date of user borrowed
 
 	time_t now;
 	struct tm nowLocal;
@@ -585,7 +585,7 @@ void Action::UserBorrow(FileHandler & file) {
 	int credit = loan.ReturnCredit(account, file);
 	int borrowed = loan.ReturnBorrow(account, file);
 
-	credit = credit - borrowed;
+	credit = credit - borrowed; //update the credit
 
 	if (credit > 0) {
 		cout << "Your credits: " << credit << endl;
@@ -596,7 +596,7 @@ void Action::UserBorrow(FileHandler & file) {
 			for (; TeCurr != NULL; TeCurr = TeCurr->TeNext) {
 				if (TeCurr->TitemCode == itemCode) {
 					check = true;
-					if (TeCurr->Tcondition == "good" && TeCurr->Tstatus == "in") {
+					if (TeCurr->Tcondition == "good" && TeCurr->Tstatus == "in") {  //only the good and in condition can be borrowed
 						userid = account;
 						username = name;
 						itemCode = TeCurr->TitemCode;
@@ -619,7 +619,7 @@ void Action::UserBorrow(FileHandler & file) {
 				}
 			}
 		}
-		else if (itemCode.substr(0, 1) == "S") {
+		else if (itemCode.substr(0, 1) == "S") {		// borrow the item by input the item code
 			Stove* StCurr = file.StHead;
 			for (; StCurr != NULL; StCurr = StCurr->StNext) {
 				if (StCurr->SitemCode == itemCode) {
@@ -639,7 +639,7 @@ void Action::UserBorrow(FileHandler & file) {
 						break;
 					}
 					else {
-						cout << "That Equipment is not avaliable." << endl;
+						cout << "That Equipment is not avaliable." << endl;		//good or damaged cant not borrow
 						system("pause");
 						system("cls");
 						UserActionDecision(file);
@@ -708,7 +708,7 @@ void Action::UserBorrow(FileHandler & file) {
 
 }
 
-void Action::UserReturn(FileHandler & file) {
+void Action::UserReturn(FileHandler & file) {		//return the book which borrowed
 
 	int credit = loan.ReturnCredit(account, file);
 	int borrowed = loan.ReturnBorrow(account, file);
@@ -782,7 +782,7 @@ void Action::UserReturn(FileHandler & file) {
 	}
 }
 
-void Action::UserChangePassword(string account, FileHandler & file){
+void Action::UserChangePassword(string account, FileHandler & file){		//change password and update the user.txt
 
 	string password;
 	cout << "Enter your new password: ";
