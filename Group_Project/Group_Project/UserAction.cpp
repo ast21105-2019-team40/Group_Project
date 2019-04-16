@@ -11,126 +11,7 @@ Action::~Action() {
 
 }
 
-/*void Action::doAction(FileHandler& file){
-
-	bool check;
-
-	cout << "Wellcom to our program" << endl;
-	cout << "Please enter your account: ";
-	cin >> account;
-	cout << "Please enter your password: ";
-	cin >> password;
-	check = false;
-
-	if (account == "admin") {
-		Admin admin;
-		if (admin.Agetter() == account && admin.Pgetter() == password) {
-			cout << "Wellcome admin" << endl;
-			check = true;
-		}
-		else {
-			cout << "account or password not correct, please enter again." << endl;
-			system("pause");
-			system("cls");
-			doAction(file);
-		}
-	}
-	else if (account.substr(0, 3) == "VEN") {
-		VEN* VENCurr = file.VHead;
-		for (; VENCurr != NULL; VENCurr = VENCurr->VNext) {
-			if (VENCurr->VuserID == account && VENCurr->Vpassword == password) {
-				cout << "Wellcome " << VENCurr->Vname << endl;
-				check = true;
-				break;
-			}
-		}
-		if (check == false) {
-			cout << "account or password not correct, please enter again." << endl;
-			system("pause");
-			system("cls");
-			doAction(file);
-		}
-		else {
-			int choice;
-			cout << "There are the functions: 1.Search Equment  2.Search Loan Record  3.Change Password  0.End" << endl;
-			cout << "Choose the function you want to use: ";
-			cin >> choice;
-			switch (choice){
-				case 0:
-					system("cls");
-					cout << "Thanks for using our program!!" << endl;
-					system("pause");
-					exit(0);
-				case 1: {
-					UserSearchDecision(file);
-				}
-				case 2: {
-
-				}
-				case 3: {
-
-				}
-			}
-
-
-		}
-	}
-	else if (account.substr(0,3) == "ROV") {
-		ROV* ROVCurr = file.RHead;
-		for (; ROVCurr != NULL; ROVCurr = ROVCurr->RNext) {
-			if (ROVCurr->RuserID == account && ROVCurr->Rpassword == password) {
-				cout << "Wellcom " << ROVCurr->Rname << endl;
-				break;
-			}
-		}
-		if (check == false) {
-			cout << "account or password not correct, please enter again." << endl;
-			system("pause");
-			system("cls");
-			doAction(file);
-		}
-	}
-	else if (account.substr(0, 3) == "SCT") {
-		SCT* SCTCurr = file.THead;
-		for (; SCTCurr != NULL; SCTCurr = SCTCurr->TNext) {
-			if (SCTCurr->TuserID == account && SCTCurr->Tpassword == password) {
-				cout << "Wellcom " << SCTCurr->Tname << endl;
-				check = true;
-				break;
-			}
-		}
-		if (check == false) {
-			cout << "account or password not correct, please enter again." << endl;
-			system("pause");
-			system("cls");
-			doAction(file);
-		}
-	}
-	else if (account.substr(0, 3) == "SCM") {
-		SCM* SCMCurr = file.MHead;
-		for (; SCMCurr != NULL; SCMCurr = SCMCurr->MNext) {
-			if (SCMCurr->MuserID == account && SCMCurr->Mpassword == password) {
-				cout << "Wellcom" << SCMCurr->Mname << endl;
-				break;
-			}
-		}
-		if (check == false) {
-			cout << "account or password not correct, please enter again." << endl;
-			system("pause");
-			system("cls");
-			doAction(file);
-		}
-	}
-	else {
-		cout << "account or password not correct, please enter again." << endl;
-		system("pause");
-		system("cls");
-		doAction(file);
-	}
-
-}*/
-
-bool Action::UserLogin(string _account, string _password, FileHandler & file) {
+bool Action::UserLogin(string _account, string _password, FileHandler & file) {		//login function
 	bool check = false;
 	account = _account;
 	password = _password;
@@ -201,7 +82,7 @@ bool Action::UserLogin(string _account, string _password, FileHandler & file) {
 	return check;
 }
 
-void Action::UserActionDecision(FileHandler & file) {
+void Action::UserActionDecision(FileHandler & file) {		//user menu
 
 	int choice;
 	cout << "Wellcome " << name << endl;
@@ -245,7 +126,7 @@ void Action::UserActionDecision(FileHandler & file) {
 	}
 }
 
-void Action::UserSearchDecision(FileHandler & file) {
+void Action::UserSearchDecision(FileHandler & file) {	//menu of searching
 	int choice;
 	cout << "1.Search All Equipment  2. Search All Avaliable Equipment  3.Search Equipment ID  4.Search Equipment Type  " << endl;
 	cout << "5.Search All Good Condition Equipment " << endl;
@@ -282,7 +163,7 @@ void Action::UserSearchDecision(FileHandler & file) {
 
 }
 
-void Action::UserSearchEqmAll(FileHandler & file) {
+void Action::UserSearchEqmAll(FileHandler & file) {		//search and display all equipment
 	Tent* TeCurr = file.TeHead;
 	for (; TeCurr != NULL; TeCurr = TeCurr->TeNext) {
 		cout << TeCurr->TitemCode << " | " << TeCurr->TitemName << " | " << TeCurr->Tbrand << " | " << TeCurr->Ttype << " | " << TeCurr->Tdate << " | " << TeCurr->Tcondition << " | "
@@ -304,38 +185,7 @@ void Action::UserSearchEqmAll(FileHandler & file) {
 	system("cls");
 }
 
-/*void Action::UserSearchEqmStatus(FileHandler & file) {
-
-	Tent* TeCurr = file.TeHead;
-	for (; TeCurr != NULL; TeCurr = TeCurr->TeNext) {
-		if (TeCurr->Tstatus == "in") {
-			cout << TeCurr->TitemCode << " | " << TeCurr->TitemName << " | " << TeCurr->Tbrand << " | " << TeCurr->Ttype << " | " << TeCurr->Tdate << " | " << TeCurr->Tcondition << " | "
-				<< TeCurr->Tstatus << " | " << TeCurr->Tppl << " | " << TeCurr->tType << " | " << TeCurr->Tdoor << " | " << TeCurr->TDlayer << " | " << TeCurr->Tcolour << endl;
-		}
-	}
-
-	Stove* SeCurr = file.StHead;
-	for (; SeCurr != NULL; SeCurr = SeCurr->StNext) {
-		if (SeCurr->Sstatus == "in") {
-			cout << SeCurr->SitemCode << " | " << SeCurr->SitemName << " | " << SeCurr->Sbrand << " | " << SeCurr->Stype << " | " << SeCurr->Sdate << " | " << SeCurr->Scondition << " | "
-				<< SeCurr->Sstatus << " | " << SeCurr->Sstype << " | " << SeCurr->Sftype << endl;
-		}
-	}
-
-	Lantern* LaCurr = file.LaHead;
-	for (; LaCurr != NULL; LaCurr = LaCurr->LaNext) {
-		if (LaCurr->Lstatus == "in") {
-			cout << LaCurr->LitemCode << " | " << LaCurr->LitemName << " | " << LaCurr->Lbrand << " | " << LaCurr->Ltype << " | " << LaCurr->Ldate << " | " << LaCurr->Lcondition << " | "
-				<< LaCurr->Lstatus << " | " << LaCurr->LactType << " | " << LaCurr->Lltype << " | " << LaCurr->Lftype << endl;
-		}
-	}
-
-	system("pause");
-	system("cls");
-
-}*/
-
-void Action::UserSearchEqmType(FileHandler & file) {
+void Action::UserSearchEqmType(FileHandler & file) {		//search and display one type of equipment
 	string type;
 	cout << "Input the equipment type you want to search: ";
 	cin >> type;
@@ -371,7 +221,7 @@ void Action::UserSearchEqmType(FileHandler & file) {
 
 }
 
-void Action::UserSearchEqmCondition(FileHandler & file) {
+void Action::UserSearchEqmCondition(FileHandler & file) { //search and display all good equipment
 
 	Tent* TeCurr = file.TeHead;
 	for (; TeCurr != NULL; TeCurr = TeCurr->TeNext) {
@@ -401,7 +251,7 @@ void Action::UserSearchEqmCondition(FileHandler & file) {
 	system("cls");
 }
 
-void Action::UserSearchEqmID(FileHandler & file) {  //search by ID
+void Action::UserSearchEqmID(FileHandler & file) {  //search by equipment ID
 
 	string id;
 	bool check = false;
@@ -519,7 +369,7 @@ void Action::DeepSearching(FileHandler & file){			//check the item base on equip
 
 }
 
-void Action::UserSearchLoanRecord(FileHandler & file) {		//check loan history (only the borrowed and not reture book )
+void Action::UserSearchLoanRecord(FileHandler & file) {		//search loan history (only the borrowed and not reture book )
 
 	bool check = false;
 
@@ -538,7 +388,7 @@ void Action::UserSearchLoanRecord(FileHandler & file) {		//check loan history (o
 	system("cls");
 }
 
-void Action::UserSearchPreLoanRecord(FileHandler & file){		//check loan history (borrow and return  action will be marked)
+void Action::UserSearchPreLoanRecord(FileHandler & file){		//check loan history (borrow and return action will be marked)
 
 	bool check = false;
 
@@ -558,7 +408,7 @@ void Action::UserSearchPreLoanRecord(FileHandler & file){		//check loan history 
 
 }
 
-void Action::UserBorrow(FileHandler & file) {		//a borrow function which show the credit of borrow book and the date of user borrowed
+void Action::UserBorrow(FileHandler & file) {		//a borrow function which show the credit of borrow book and the date that user borrowed
 
 	time_t now;
 	struct tm nowLocal;

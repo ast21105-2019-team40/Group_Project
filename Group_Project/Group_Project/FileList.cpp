@@ -13,7 +13,7 @@ FileList::~FileList(){
 
 }
 
-void FileList::UserFileStoreAuto(){
+void FileList::UserFileStoreAuto(){   //read automatically, read line if line is not empty read in and do linklist
 
 	string Fileline;
 	ifstream dataSet;
@@ -55,7 +55,7 @@ void FileList::UserFileStoreAuto(){
 }
 
 
-void FileList::UserFileWriteAuto(){
+void FileList::UserFileWriteAuto(){  //cover the the file which have read
 	int counter = 0;
 	File* UCurr = UHead;
 	ofstream NewFile;
@@ -76,7 +76,7 @@ void FileList::UserFileWriteAuto(){
 	rename("Newfile.txt", "user.txt");
 }
 
-string FileList::UserFileStore(){
+string FileList::UserFileStore(){	
 
 	string filename;
 	bool check;
@@ -131,7 +131,7 @@ string FileList::UserFileStore(){
 	}
 }
 
-void FileList::UserFileWrite(string filename){
+void FileList::UserFileWrite(string filename){ 
 	
 	int counter = 0;
 	File* UCurr = UHead;

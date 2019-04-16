@@ -8,17 +8,17 @@
 #include <string>
 using namespace std;
 
-void mainpage(FileHandler& file) {
+void mainpage(FileHandler& file) {	//main page which idendify the user's Identity by checking the login id (admin or user)
 
-	string account;
-	string password;
-	string accounttype;
+	string account;		//the login id
+	string password;	//the password
+	string accounttype;  //user or admin
 	bool check = false;
 
 	cout << "Wellcome to our program" << endl;
-	cout << "Please enter your account: ";
+	cout << "Please enter your account: ";	//login id
 	cin >> account;
-	cout << "Please enter your password: ";
+	cout << "Please enter your password: "; //login password
 	cin >> password;
 
 	accounttype = account.substr(0, 3);

@@ -4,7 +4,7 @@ LoanControl::LoanControl(){
 	credit = 0;
 }
 
-int LoanControl::ReturnCredit(string account, FileHandler & file)
+int LoanControl::ReturnCredit(string account, FileHandler & file)	//set the credit of different type of user
 {
 	if (account.substr(0, 3) == "VEN") {
 		VEN* VENCurr = file.VHead;
@@ -74,7 +74,7 @@ int LoanControl::ReturnCredit(string account, FileHandler & file)
 	return credit;
 }
 
-int LoanControl::ReturnBorrow(string account, FileHandler & file){
+int LoanControl::ReturnBorrow(string account, FileHandler & file){	//return the number user has borrowed
 	borrowed = 0;
 	Loan* LoCurr = file.LHead;
 	for (; LoCurr != NULL; LoCurr = LoCurr->LNext) {
@@ -85,7 +85,7 @@ int LoanControl::ReturnBorrow(string account, FileHandler & file){
 	return borrowed;
 }
 
-void LoanControl::WriteLoanfile(FileHandler & file){
+void LoanControl::WriteLoanfile(FileHandler & file){	//overwrite the loan file
 
 	Loan* LoCurr = file.LHead;
 	ofstream NewFile;
@@ -103,7 +103,7 @@ void LoanControl::WriteLoanfile(FileHandler & file){
 	rename("Newfile.txt", "loan.txt");
 }
 
-void LoanControl::WriteEqmfile(FileHandler & file){
+void LoanControl::WriteEqmfile(FileHandler & file){		//overwrite the equipment file
 
 	Tent* TeCurr = file.TeHead;
 	Stove* StCurr = file.StHead;
@@ -136,7 +136,7 @@ void LoanControl::WriteEqmfile(FileHandler & file){
 
 }
 
-void LoanControl::WriteUserfile(FileHandler & file){
+void LoanControl::WriteUserfile(FileHandler & file){		//overwrite the user file
 	VEN* VENcurr = file.VHead;
 	ROV* ROVcurr = file.RHead;
 	SCT* SCTcurr = file.THead;
@@ -170,7 +170,7 @@ void LoanControl::WriteUserfile(FileHandler & file){
 
 }
 
-string LoanControl::ReturnDate(int date, int month, int year){
+string LoanControl::ReturnDate(int date, int month, int year){ //return the return date
 
 	int returnDate = date + 14;
 	string Rdate = "";

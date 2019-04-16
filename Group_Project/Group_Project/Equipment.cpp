@@ -14,7 +14,7 @@ Equipment::Equipment(){
 	fueltype = "";
 }
 
-void Equipment::SearchTentDeep(string _type, FileHandler & file){
+void Equipment::SearchTentDeep(string _type, FileHandler & file){  //search tent deeply
 
 	bool check = false;
 	cin.ignore();
@@ -52,9 +52,9 @@ void Equipment::SearchTentDeep(string _type, FileHandler & file){
 	system("pause");
 	system("cls");
 
-}
+}		//
 
-void Equipment::SearchStoveDeep(string _type, FileHandler & file){
+void Equipment::SearchStoveDeep(string _type, FileHandler & file){	//search stove deeply
 
 	bool check = false;
 	cin.ignore();
@@ -88,7 +88,7 @@ void Equipment::SearchStoveDeep(string _type, FileHandler & file){
 
 }
 
-void Equipment::SearchLanternDeep(string _type, FileHandler & file){
+void Equipment::SearchLanternDeep(string _type, FileHandler & file){	//search lantern deeply
 
 	bool check = false;
 	cin.ignore();

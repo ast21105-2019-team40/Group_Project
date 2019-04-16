@@ -16,7 +16,7 @@ string Admin::Pgetter(){
 	return password;
 }
 
-bool Admin::AdminLogin(string _account, string _password, FileHandler & file) {
+bool Admin::AdminLogin(string _account, string _password, FileHandler & file) {		//match admin id and password
 	bool check = false;
 
 	if (account == _account && password == _password) {
@@ -26,7 +26,7 @@ bool Admin::AdminLogin(string _account, string _password, FileHandler & file) {
 	return check;
 }
 
-void Admin::AdminDecision(FileHandler & file){
+void Admin::AdminDecision(FileHandler & file){		//admin menu
 	int choice;
 	cout << "Wellcome Admin" << endl;
 	cout << "There are the function: 1.Display  2.Searching  3.Produce a txt file  4.Insert File  5.Delete file  6.Update Equipment file  7.Delete Item  0.Exit" << endl;
@@ -74,7 +74,7 @@ void Admin::AdminDecision(FileHandler & file){
 
 }
 
-void Admin::AdminDisplay(FileHandler & file) {
+void Admin::AdminDisplay(FileHandler & file) {  //menu of displaying which domain of data
 
 	int choice;
 	cout << "1.Display all  2.Display Userfile  3.Display Equipmentfile  4.Display Loanfile" << endl;
@@ -104,7 +104,7 @@ void Admin::AdminDisplay(FileHandler & file) {
 	}
 }
 
-void Admin::Searching(FileHandler & file){
+void Admin::Searching(FileHandler & file){		//menu of which kind of searching
 
 	int choice;
 	cout << "1.Search All Equipment  2. Search All Avaliable Equipment  3.Search Equipment ID  4.Search Equipment Type  " << endl;
@@ -147,7 +147,7 @@ void Admin::Searching(FileHandler & file){
 
 }
 
-void Admin::UpdateEquipmentByID(FileHandler & file){
+void Admin::UpdateEquipmentByID(FileHandler & file){		//update equipment condition
 
 	bool check = false;
 	string id;
@@ -225,7 +225,7 @@ void Admin::UpdateEquipmentByID(FileHandler & file){
 	WriteEqmfile(file);
 }
 
-void Admin::ProduceFileDecision(FileHandler & file){
+void Admin::ProduceFileDecision(FileHandler & file){  //menu of generate a txt file
 
 	int choice;
 	cout << "1.Produce all file  2.Produce User file  3.Produce Equipment file  4.Produce Loan file" << endl;
@@ -259,7 +259,7 @@ void Admin::ProduceFileDecision(FileHandler & file){
 
 }
 
-void Admin::ProduceTextfile(FileHandler & file){
+void Admin::ProduceTextfile(FileHandler & file){		//produce a new file with all data
 
 
 	Tent* TeCurr = file.TeHead;
@@ -324,7 +324,7 @@ void Admin::ProduceTextfile(FileHandler & file){
 
 }
 
-void Admin::ProduceUserfile(FileHandler & file){
+void Admin::ProduceUserfile(FileHandler & file){		//produce a new file with user data
 
 	VEN* VENcurr = file.VHead;
 	ROV* ROVcurr = file.RHead;
@@ -363,7 +363,7 @@ void Admin::ProduceUserfile(FileHandler & file){
 
 }
 
-void Admin::ProduceEqmfile(FileHandler & file){
+void Admin::ProduceEqmfile(FileHandler & file){		//produce a new file with equipment data
 
 	Tent* TeCurr = file.TeHead;
 	Stove* StCurr = file.StHead;
@@ -400,7 +400,7 @@ void Admin::ProduceEqmfile(FileHandler & file){
 	system("cls");
 }
 
-void Admin::ProduceLoanfile(FileHandler & file){
+void Admin::ProduceLoanfile(FileHandler & file){		////produce a new file with loan data
 
 	Loan* LoCurr = file.LHead;
 
@@ -426,7 +426,7 @@ void Admin::ProduceLoanfile(FileHandler & file){
 
 
 
-void Admin::Insert(FileHandler & file){
+void Admin::Insert(FileHandler & file){		//menu of insert new data
 	int choice;
 	cout << "1.Insert Userfile  2.Insert Equipment file  3.Insert Loan file" << endl;
 	cout << "Enter your choice: ";
@@ -486,7 +486,7 @@ void Admin::Insert(FileHandler & file){
 	}
 }
 
-void Admin::Deletefile(){
+void Admin::Deletefile(){		//delete a data file
 	string filename;
 	ifstream dataSet;
 	cout << "Input the file name that you want to delete: ";
@@ -504,7 +504,7 @@ void Admin::Deletefile(){
 	}
 }
 
-void Admin::DeleteDecison(FileHandler & file){
+void Admin::DeleteDecison(FileHandler & file){		//delete item menu
 	int choice;
 	cout << "1.Delete user data  2.Delete equipment data" << endl;
 	cout << "Enter your choice: ";
@@ -531,7 +531,7 @@ void Admin::DeleteDecison(FileHandler & file){
 
 }
 
-void Admin::DeleteUserDataID(FileHandler & file){
+void Admin::DeleteUserDataID(FileHandler & file){	//delete user by id
 
 	bool check = false;
 	string id;
@@ -644,7 +644,7 @@ void Admin::DeleteUserDataID(FileHandler & file){
 	}
 }
 
-void Admin::DeleteEqmDataID(FileHandler & file){
+void Admin::DeleteEqmDataID(FileHandler & file){ //delete equipment by id
 
 	bool check = false;
 	string id;

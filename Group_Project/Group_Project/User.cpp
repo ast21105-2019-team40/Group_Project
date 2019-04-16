@@ -1,6 +1,6 @@
 #include "User.h"
 
-VENuser::VENuser()
+VENuser::VENuser()	
 {
 }
 

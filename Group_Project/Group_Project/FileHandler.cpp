@@ -11,7 +11,7 @@ FileHandler::FileHandler()
 
 }
 
-void FileHandler::UserfileinputAuo(){
+void FileHandler::UserfileinputAuo(){ //store the following data to each type of user in link list
 
 	VEN* VENcurr = VHead;
 	ROV* ROVcurr = RHead;
@@ -111,7 +111,7 @@ void FileHandler::UserfileinputAuo(){
 
 }
 
-void FileHandler::EqmfileainputAuto(){
+void FileHandler::EqmfileainputAuto(){ 
 
 	Tent* TeCurr = TeHead;
 	Stove* SeCurr = StHead;
@@ -488,7 +488,7 @@ void FileHandler::Loanfileinput(string filename){
 	//cout << "Input the file name: ";
 	//cin >> filename;
 
-	dataSet.open(autofilename3);
+	dataSet.open(autofilename3);  
 	if (!(dataSet.is_open())) {
 		cerr << "Error. The file doesn't open correctly." << endl;
 	}
@@ -523,7 +523,7 @@ void FileHandler::Loanfileinput(string filename){
 
 }
 
-void FileHandler::displayAll(){
+void FileHandler::displayAll(){		//read and display all element
 
 	cout << endl;
 	cout << "User file:" << endl;
@@ -581,7 +581,7 @@ void FileHandler::displayAll(){
 
 }
 
-void FileHandler::displayUserfile() {
+void FileHandler::displayUserfile() { //read and display user element
 
 	cout << endl;
 	cout << "User file:" << endl;
@@ -609,7 +609,7 @@ void FileHandler::displayUserfile() {
 
 }
 
-void FileHandler::displayEqmfile(){
+void FileHandler::displayEqmfile(){		//read and display equipment element
 
 	cout << endl;
 	cout << "Equipment file: " << endl;
@@ -636,7 +636,7 @@ void FileHandler::displayEqmfile(){
 
 }
 
-void FileHandler::displayLoanfile(){
+void FileHandler::displayLoanfile(){		//read and display loan element
 
 	cout << endl;
 	cout << "Loan file: " << endl;
